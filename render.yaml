@@ -2,14 +2,11 @@ services:
   - type: web
     name: kaalyug-api
     runtime: node
-    plan: free
     rootDir: backend
     buildCommand: npm ci
     startCommand: npm start
     healthCheckPath: /health
     envVars:
-      - key: NODE_ENV
-        value: production
       - key: MONGO_URI
         sync: false
       - key: JWT_SECRET
@@ -20,12 +17,9 @@ services:
   - type: web
     name: kaalyug-web
     runtime: node
-    plan: free
     rootDir: frontend
     buildCommand: npm ci && npm run build
     startCommand: npm start
     envVars:
-      - key: NODE_ENV
-        value: production
       - key: NEXT_PUBLIC_API_URL
         sync: false

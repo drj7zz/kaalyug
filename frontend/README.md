@@ -1,4 +1,14 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# KAALYUG frontend
+
+The Next.js frontend communicates with the KAALYUG Express API using `NEXT_PUBLIC_API_URL`.
+
+## Environment variables
+
+Copy `.env.example` to `.env.local` for local development. Never commit `.env.local`.
+
+```bash
+NEXT_PUBLIC_API_URL=http://localhost:5000
+```
 
 ## Getting Started
 
@@ -29,8 +39,6 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Render deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This repository includes a root `render.yaml` that defines separate Render services for the API and frontend. Add the real API URL as `NEXT_PUBLIC_API_URL` in the frontend service after the API is deployed.
