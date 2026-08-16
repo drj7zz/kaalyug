@@ -11,10 +11,20 @@ connectDB();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const allowedOrigins = process.env.CLIENT_ORIGIN?.split(',').map((origin) => origin.trim()).filter(Boolean);
+const allowedOrigins = process.env.CLIENT_ORIGIN?.split(',').map((origin) => origin.trim()).filter(Boolean) || [];
 
 app.disable('x-powered-by');
-app.use(cors({ origin: allowedOrigins?.length ? allowedOrigins : true }));
+app.use(cors({
+    origin(origin, callback) {
+        // Requests without an Origin header (health checks and server-to-server calls) are allowed.
+        if (!origin || allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+        return callback(new Error('Origin is not allowed by CORS'));
+    },
+    methods: ['GET', 'POST', 'OPTIONS'],
+    optionsSuccessStatus: 204
+}));
 app.use(express.json({ limit: '100kb' }));
 
 // Basic route
@@ -31,6 +41,13 @@ app.use('/api/projects', require('./routes/projectRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/admin', require('./routes/adminRoutes'));
 // app.use('/api/wallet', require('./routes/walletRoutes'));
+
+app.use((err, _req, res, _next) => {
+    if (err.message === 'Origin is not allowed by CORS') {
+        return res.status(403).json({ message: 'Origin is not allowed' });
+    }
+    return res.status(500).json({ message: 'Internal server error' });
+});
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on port ${PORT}`);

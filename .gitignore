@@ -1,0 +1,13 @@
+# Local environment files and secrets — never commit these.
+.env
+.env.*
+!.env.example
+
+# Dependencies and generated builds
+node_modules/
+dist/
+.next/
+
+# Logs and OS files
+*.log
+.DS_Store
