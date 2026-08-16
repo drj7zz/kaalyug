@@ -13,7 +13,7 @@ const protect = async (req, res, next) => {
             
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
             
-            req.user = await User.findById(decoded.id).select('_id name email');
+            req.user = await User.findById(decoded.id).select('_id name email role');
             if (!req.user) {
                 return res.status(401).json({ message: 'Not authorized, account no longer exists' });
             }
@@ -30,4 +30,15 @@ const protect = async (req, res, next) => {
     }
 };
 
-module.exports = { protect };
+const adminOnly = (req, res, next) => {
+    const configuredAdmin = process.env.ADMIN_EMAIL?.trim().toLowerCase();
+    const isConfiguredAdmin = configuredAdmin && req.user.email === configuredAdmin;
+
+    if (req.user.role === 'admin' || isConfiguredAdmin) {
+        return next();
+    }
+
+    return res.status(403).json({ message: 'Administrator access required' });
+};
+
+module.exports = { protect, adminOnly };

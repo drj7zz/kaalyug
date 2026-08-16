@@ -1,4 +1,4 @@
-const configuredApiUrl = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "");
+const configuredApiUrl = import.meta.env.VITE_API_URL?.replace(/\/$/, "");
 
 export const apiUrl = configuredApiUrl || "http://localhost:5000";
 

@@ -13,13 +13,3 @@ services:
         generateValue: true
       - key: CLIENT_ORIGIN
         sync: false
-
-  - type: web
-    name: kaalyug-web
-    runtime: node
-    rootDir: frontend
-    buildCommand: npm ci && npm run build
-    startCommand: npm start
-    envVars:
-      - key: NEXT_PUBLIC_API_URL
-        sync: false

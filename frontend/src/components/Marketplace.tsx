@@ -1,7 +1,5 @@
-"use client";
-
 import { useState, useEffect } from "react";
-import { apiUrl } from "@/lib/api";
+import { apiUrl } from "../lib/api";
 
 type Project = {
   _id: string;

@@ -1,12 +1,12 @@
-"use client";
-import Link from "next/link";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 type UserSession = {
   _id: string;
   name: string;
   email: string;
   token: string;
+  role: "user" | "admin";
 };
 
 export default function Navbar() {
@@ -44,21 +44,22 @@ export default function Navbar() {
       </div>
 
       <div className="hidden md:flex items-center gap-[22px]">
-        <Link href="#marketplace" className="text-[#92939e] no-underline text-[11px] transition duration-200 hover:text-white">
+        <a href="#marketplace" className="text-[#92939e] no-underline text-[11px] transition duration-200 hover:text-white">
           Marketplace
-        </Link>
-        <Link href="#wallet" className="text-[#92939e] no-underline text-[11px] transition duration-200 hover:text-white">
+        </a>
+        <a href="#wallet" className="text-[#92939e] no-underline text-[11px] transition duration-200 hover:text-white">
           YugCoin
-        </Link>
-        <Link href="#publish" className="text-[#92939e] no-underline text-[11px] transition duration-200 hover:text-white">
+        </a>
+        <a href="#publish" className="text-[#92939e] no-underline text-[11px] transition duration-200 hover:text-white">
           Publish
-        </Link>
-        <Link href="/#ecosystem" className="text-[#92939e] no-underline text-[11px] transition duration-200 hover:text-white">
+        </a>
+        <a href="#ecosystem" className="text-[#92939e] no-underline text-[11px] transition duration-200 hover:text-white">
           Ecosystem
-        </Link>
+        </a>
         {userInfo ? (
           <div className="flex items-center gap-[15px]">
             <span className="text-white text-[11px]">Hello, {userInfo.name}</span>
+            {userInfo.role === "admin" && <Link to="/admin" className="text-[#71e5d1] text-[10px]">Admin</Link>}
             <button
               onClick={handleLogout}
               className="text-[#ff8799] bg-[rgba(255,135,153,0.1)] px-[10px] py-[6px] rounded-[8px] text-[10px] hover:bg-[rgba(255,135,153,0.2)]"
@@ -67,7 +68,7 @@ export default function Navbar() {
             </button>
           </div>
         ) : (
-          <Link href="/login" className="px-[13px] py-[9px] text-[#71e5d1] border border-[rgba(94,225,197,0.2)] rounded-[12px] bg-[rgba(94,225,197,0.05)] text-[11px] transition duration-200 hover:bg-[rgba(94,225,197,0.1)]">
+          <Link to="/login" className="px-[13px] py-[9px] text-[#71e5d1] border border-[rgba(94,225,197,0.2)] rounded-[12px] bg-[rgba(94,225,197,0.05)] text-[11px] transition duration-200 hover:bg-[rgba(94,225,197,0.1)]">
             Login
           </Link>
         )}

@@ -9,10 +9,16 @@ const generateToken = (id) => {
     });
 };
 
+const userRole = (user) => {
+    const configuredAdmin = process.env.ADMIN_EMAIL?.trim().toLowerCase();
+    return user.role === 'admin' || (configuredAdmin && user.email === configuredAdmin) ? 'admin' : 'user';
+};
+
 const userResponse = (user) => ({
     _id: user._id,
     name: user.name,
     email: user.email,
+    role: userRole(user),
     token: generateToken(user._id)
 });
 
@@ -91,7 +97,8 @@ const getCurrentUser = async (req, res) => {
     res.json({
         _id: req.user._id,
         name: req.user.name,
-        email: req.user.email
+        email: req.user.email,
+        role: userRole(req.user)
     });
 };
 

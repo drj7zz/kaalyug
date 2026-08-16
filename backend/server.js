@@ -29,6 +29,7 @@ app.get('/health', (_req, res) => {
 // Routes placeholders
 app.use('/api/projects', require('./routes/projectRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/admin', require('./routes/adminRoutes'));
 // app.use('/api/wallet', require('./routes/walletRoutes'));
 
 app.listen(PORT, '0.0.0.0', () => {
