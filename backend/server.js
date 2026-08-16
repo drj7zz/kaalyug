@@ -22,11 +22,15 @@ app.get('/', (req, res) => {
     res.json({ message: 'Kaalyug API is running' });
 });
 
+app.get('/health', (_req, res) => {
+    res.status(200).json({ status: 'ok' });
+});
+
 // Routes placeholders
 app.use('/api/projects', require('./routes/projectRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
 // app.use('/api/wallet', require('./routes/walletRoutes'));
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on port ${PORT}`);
 });
