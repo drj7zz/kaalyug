@@ -24,6 +24,7 @@ export default function Navbar() {
     return () => window.clearTimeout(timer);
   }, []);
 
+
   const handleLogout = () => {
     localStorage.removeItem("userInfo");
     setUserInfo(null);
@@ -44,32 +45,32 @@ export default function Navbar() {
       </div>
 
       <div className="hidden md:flex items-center gap-[22px]">
-        <a href="#marketplace" className="text-[#92939e] no-underline text-[11px] transition duration-200 hover:text-white">
-          Marketplace
+        <a href="#marketplace" className="text-[#92939e] no-underline text-[12px] font-medium transition duration-200 hover:text-white flex items-center gap-1.5">
+          <i className="fa-solid fa-store text-[10px]"></i> Marketplace
         </a>
-        <a href="#wallet" className="text-[#92939e] no-underline text-[11px] transition duration-200 hover:text-white">
-          YugCoin
+        <a href="#wallet" className="text-[#92939e] no-underline text-[12px] font-medium transition duration-200 hover:text-white flex items-center gap-1.5">
+          <i className="fa-solid fa-wallet text-[10px]"></i> YugCoin
         </a>
-        <a href="#publish" className="text-[#92939e] no-underline text-[11px] transition duration-200 hover:text-white">
-          Publish
+        <a href="#publish" className="text-[#92939e] no-underline text-[12px] font-medium transition duration-200 hover:text-white flex items-center gap-1.5">
+          <i className="fa-solid fa-cloud-arrow-up text-[10px]"></i> Publish
         </a>
-        <a href="#ecosystem" className="text-[#92939e] no-underline text-[11px] transition duration-200 hover:text-white">
-          Ecosystem
+        <a href="#ecosystem" className="text-[#92939e] no-underline text-[12px] font-medium transition duration-200 hover:text-white flex items-center gap-1.5">
+          <i className="fa-solid fa-globe text-[10px]"></i> Ecosystem
         </a>
         {userInfo ? (
           <div className="flex items-center gap-[15px]">
-            <span className="text-white text-[11px]">Hello, {userInfo.name}</span>
-            {userInfo.role === "admin" && <Link to="/admin" className="text-[#71e5d1] text-[10px]">Admin</Link>}
+            <span className="text-white text-[12px] flex items-center gap-1.5"><i className="fa-solid fa-user text-[#7647ff]"></i> {userInfo.name}</span>
+            {userInfo.role === "admin" && <Link to="/admin" className="text-[#71e5d1] text-[11px] font-medium flex items-center gap-1"><i className="fa-solid fa-shield-halved"></i> Admin</Link>}
             <button
               onClick={handleLogout}
-              className="text-[#ff8799] bg-[rgba(255,135,153,0.1)] px-[10px] py-[6px] rounded-[8px] text-[10px] hover:bg-[rgba(255,135,153,0.2)]"
+              className="btn-hover text-[#ff8799] bg-[rgba(255,135,153,0.1)] px-[12px] py-[8px] rounded-[10px] text-[11px] font-medium flex items-center gap-1.5"
             >
-              Logout
+              <i className="fa-solid fa-arrow-right-from-bracket"></i> Logout
             </button>
           </div>
         ) : (
-          <Link to="/login" className="px-[13px] py-[9px] text-[#71e5d1] border border-[rgba(94,225,197,0.2)] rounded-[12px] bg-[rgba(94,225,197,0.05)] text-[11px] transition duration-200 hover:bg-[rgba(94,225,197,0.1)]">
-            Login
+          <Link to="/login" className="btn-hover flex items-center gap-1.5 px-[16px] py-[10px] text-[#71e5d1] border border-[rgba(94,225,197,0.2)] rounded-[12px] bg-[rgba(94,225,197,0.05)] text-[12px] font-medium">
+            <i className="fa-solid fa-right-to-bracket"></i> Login
           </Link>
         )}
       </div>

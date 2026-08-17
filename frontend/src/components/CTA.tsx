@@ -7,9 +7,9 @@ export default function CTA() {
       </p>
       <a
         href="#publish"
-        className="btn-hover bg-primary-gradient inline-flex items-center justify-center px-[19px] py-[13px] rounded-[14px] text-white no-underline text-[12px] font-semibold border border-[rgba(255,255,255,0.1)]"
+        className="btn-hover bg-primary-gradient inline-flex items-center justify-center gap-[8px] px-[24px] py-[14px] rounded-[16px] text-white no-underline text-[13px] font-semibold border border-[rgba(255,255,255,0.15)]"
       >
-        Start Publishing →
+        Start Publishing <i className="fa-solid fa-arrow-right text-[11px]"></i>
       </a>
     </section>
   );

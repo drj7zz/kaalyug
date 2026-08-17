@@ -16,19 +16,19 @@ export default function Hero() {
         Kaalyug is a developer-focused ecosystem where creators can publish complete projects, discover useful digital products and eventually exchange them through the native YugCoin wallet system.
       </p>
 
-      <div className="flex flex-col md:flex-row gap-[12px] mt-[30px] w-full md:w-auto">
+      <div className="flex flex-col sm:flex-row gap-[16px] mt-[35px] w-full sm:w-auto justify-center items-center">
         <a
           href="#marketplace"
-          className="btn-hover bg-primary-gradient inline-flex items-center justify-center px-[19px] py-[13px] rounded-[14px] text-white no-underline text-[12px] font-semibold border border-[rgba(255,255,255,0.1)] w-full md:w-auto"
+          className="btn-hover bg-primary-gradient inline-flex items-center justify-center gap-[8px] px-[24px] py-[14px] rounded-[16px] text-white no-underline text-[13px] font-semibold border border-[rgba(255,255,255,0.15)] w-full sm:w-auto"
         >
-          Explore Marketplace →
+          Explore Marketplace <i className="fa-solid fa-arrow-right text-[11px]"></i>
         </a>
 
         <a
           href="#publish"
-          className="btn-hover bg-[rgba(255,255,255,0.035)] inline-flex items-center justify-center px-[19px] py-[13px] rounded-[14px] text-white no-underline text-[12px] font-semibold border border-[rgba(255,255,255,0.1)] w-full md:w-auto"
+          className="btn-hover bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.08)] inline-flex items-center justify-center gap-[8px] px-[24px] py-[14px] rounded-[16px] text-white no-underline text-[13px] font-semibold border border-[rgba(255,255,255,0.1)] w-full sm:w-auto"
         >
-          Publish Your Project
+          <i className="fa-solid fa-cloud-arrow-up text-[12px]"></i> Publish Your Project
         </a>
       </div>
     </section>

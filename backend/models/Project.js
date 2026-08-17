@@ -29,6 +29,15 @@ const projectSchema = new mongoose.Schema({
     previewClass: {
         type: String,
         required: true
+    },
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    githubUrl: {
+        type: String,
+        required: false
     }
 }, { timestamps: true });
 

@@ -1,19 +1,74 @@
 "use client";
 
 import { useState } from "react";
+import { apiUrl } from "../lib/api";
 
 export default function Publish() {
   const [access, setAccess] = useState("free");
   const [isPublishing, setIsPublishing] = useState(false);
   const [buttonText, setButtonText] = useState("Publish Project →");
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    category: "development",
+    tag: "Complete Project",
+    githubUrl: "",
+  });
+  const [error, setError] = useState("");
 
-  const handlePublish = () => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handlePublish = async () => {
+    setError("");
+    if (!formData.name || !formData.description) {
+      setError("Please fill out all required fields.");
+      return;
+    }
+
     setIsPublishing(true);
-    setButtonText("✓ Project Ready for Review");
-    setTimeout(() => {
+    setButtonText("Publishing...");
+
+    try {
+      const userInfoString = localStorage.getItem("userInfo");
+      if (!userInfoString) {
+        throw new Error("You must be logged in to publish a project.");
+      }
+      const userInfo = JSON.parse(userInfoString);
+
+      const payload = {
+        ...formData,
+        price: access === "free" ? "FREE" : "100 YC", // Dummy pricing for now
+        symbol: formData.name.charAt(0).toUpperCase() || "P",
+        previewClass: `product-preview-${Math.floor(Math.random() * 6) + 1}`,
+      };
+
+      const response = await fetch(`${apiUrl}/projects`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to publish project.");
+      }
+
+      setButtonText("✓ Project Published");
+      setTimeout(() => {
+        setIsPublishing(false);
+        setButtonText("Publish Another Project →");
+        setFormData({ name: "", description: "", category: "development", tag: "Complete Project", githubUrl: "" });
+      }, 2500);
+    } catch (err: any) {
+      setError(err.message);
       setIsPublishing(false);
       setButtonText("Publish Project →");
-    }, 2500);
+    }
   };
 
   return (
@@ -56,46 +111,72 @@ export default function Publish() {
             <h3 className="mt-[6px] text-[17px] font-bold">Publish to Kaalyug</h3>
           </div>
           <div className="px-[9px] py-[6px] rounded-[8px] text-[#888a95] bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.08)] text-[8px]">
-            DRAFT
+            LIVE
           </div>
         </div>
 
+        {error && <div className="mt-4 p-2 bg-red-500/20 border border-red-500/50 rounded-lg text-red-400 text-xs text-center">{error}</div>}
+
         <div className="mt-[22px] pb-[18px] flex items-center gap-[11px] border-b border-[rgba(255,255,255,0.07)]">
           <div className="w-[35px] h-[35px] grid place-items-center rounded-[11px] text-[13px] font-bold bg-gradient-to-br from-[#784bff] to-[#4fcfff] shadow-[0_0_20px_rgba(120,70,255,0.25)] text-white">
-            K
+            {formData.name.charAt(0).toUpperCase() || "K"}
           </div>
           <div>
-            <strong className="block text-[10px]">Your Project</strong>
-            <small className="block mt-[3px] text-[#696b76] text-[8px]">by Author</small>
+            <strong className="block text-[10px]">{formData.name || "Your Project"}</strong>
+            <small className="block mt-[3px] text-[#696b76] text-[8px]">by You</small>
           </div>
         </div>
 
         <div className="relative mt-[17px]">
           <label className="block mb-[7px] text-[#676974] text-[8px] tracking-[0.1em]">PROJECT NAME</label>
-          <div className="min-h-[38px] flex items-center justify-between px-[12px] py-[10px] rounded-[11px] text-[#a9aab4] bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[9px]">
-            My Awesome Project
-          </div>
+          <input
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            placeholder="My Awesome Project"
+            className="w-full min-h-[38px] flex items-center justify-between px-[12px] py-[10px] rounded-[11px] text-[#a9aab4] bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[12px] outline-none focus:border-[#7647ff] transition-colors"
+          />
         </div>
 
         <div className="relative mt-[17px]">
           <label className="block mb-[7px] text-[#676974] text-[8px] tracking-[0.1em]">DESCRIPTION</label>
-          <div className="min-h-[48px] flex items-start px-[12px] py-[10px] rounded-[11px] text-[#70727d] bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[9px]">
-            A complete project built for the community...
-          </div>
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleInputChange}
+            placeholder="A complete project built for the community..."
+            rows={3}
+            className="w-full min-h-[48px] flex items-start px-[12px] py-[10px] rounded-[11px] text-[#a9aab4] bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[12px] outline-none focus:border-[#7647ff] transition-colors resize-none"
+          />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px] mt-[17px]">
           <div className="relative">
             <label className="block mb-[7px] text-[#676974] text-[8px] tracking-[0.1em]">CATEGORY</label>
-            <div className="min-h-[38px] flex items-center justify-between px-[12px] py-[10px] rounded-[11px] text-[#a9aab4] bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[9px]">
-              Web Development <span>⌄</span>
-            </div>
+            <select
+              name="category"
+              value={formData.category}
+              onChange={handleInputChange}
+              className="w-full min-h-[38px] flex items-center justify-between px-[12px] py-[10px] rounded-[11px] text-[#a9aab4] bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[12px] outline-none focus:border-[#7647ff] transition-colors appearance-none"
+            >
+              <option value="development">Web Development</option>
+              <option value="ui">UI / Components</option>
+              <option value="templates">Templates</option>
+              <option value="tools">Tools</option>
+            </select>
           </div>
           <div className="relative">
             <label className="block mb-[7px] text-[#676974] text-[8px] tracking-[0.1em]">PROJECT TYPE</label>
-            <div className="min-h-[38px] flex items-center justify-between px-[12px] py-[10px] rounded-[11px] text-[#a9aab4] bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[9px]">
-              Complete Project <span>⌄</span>
-            </div>
+            <select
+              name="tag"
+              value={formData.tag}
+              onChange={handleInputChange}
+              className="w-full min-h-[38px] flex items-center justify-between px-[12px] py-[10px] rounded-[11px] text-[#a9aab4] bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[12px] outline-none focus:border-[#7647ff] transition-colors appearance-none"
+            >
+              <option value="Complete Project">Complete Project</option>
+              <option value="Open Source">Open Source</option>
+              <option value="Design Asset">Design Asset</option>
+            </select>
           </div>
         </div>
 
@@ -107,7 +188,7 @@ export default function Publish() {
                 access === "free"
                   ? "bg-[rgba(60,220,190,0.06)] border-[rgba(100,220,200,0.3)]"
                   : "bg-[rgba(255,255,255,0.025)] border-[rgba(255,255,255,0.08)]"
-              } border`}
+              } border transition-colors`}
               onClick={() => setAccess("free")}
             >
               <strong className={`block text-[9px] ${access === "free" ? "text-[#66dfca]" : "text-[#a9abb6]"}`}>FREE</strong>
@@ -118,7 +199,7 @@ export default function Publish() {
                 access === "paid"
                   ? "bg-[rgba(60,220,190,0.06)] border-[rgba(100,220,200,0.3)]"
                   : "bg-[rgba(255,255,255,0.025)] border-[rgba(255,255,255,0.08)]"
-              } border`}
+              } border transition-colors`}
               onClick={() => setAccess("paid")}
             >
               <strong className={`block text-[9px] ${access === "paid" ? "text-[#66dfca]" : "text-[#a9abb6]"}`}>PAID</strong>
@@ -129,21 +210,28 @@ export default function Publish() {
 
         <div className="relative mt-[17px]">
           <label className="block mb-[7px] text-[#676974] text-[8px] tracking-[0.1em]">SOURCE / DEMO</label>
-          <div className="min-h-[38px] flex items-center justify-between px-[12px] py-[10px] rounded-[11px] text-[#a9aab4] bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[9px]">
-            <span>github.com/your-project</span>
-            <span>↗</span>
+          <div className="relative w-full">
+            <i className="fa-brands fa-github absolute left-[12px] top-1/2 -translate-y-1/2 text-[#676974] text-[12px]"></i>
+            <input
+              name="githubUrl"
+              value={formData.githubUrl}
+              onChange={handleInputChange}
+              placeholder="github.com/your-project"
+              className="w-full min-h-[38px] flex items-center justify-between pl-[32px] pr-[12px] py-[10px] rounded-[11px] text-[#a9aab4] bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[12px] outline-none focus:border-[#7647ff] transition-colors"
+            />
           </div>
         </div>
 
         <button
-          className="w-full mt-[20px] p-[13px] border-0 rounded-[13px] text-white text-[10px] font-semibold cursor-pointer shadow-[0_10px_30px_rgba(110,70,255,0.25)] transition duration-250 hover:-translate-y-[2px]"
+          className="btn-hover w-full mt-[20px] p-[13px] border-0 rounded-[13px] text-white text-[10px] font-semibold flex justify-center items-center gap-[6px] shadow-[0_10px_30px_rgba(110,70,255,0.25)]"
           style={{ background: isPublishing ? "linear-gradient(100deg,#36c9a5,#51d7c2)" : "linear-gradient(100deg,#51c9ff,#9853ff)" }}
           onClick={handlePublish}
+          disabled={isPublishing}
         >
-          {buttonText}
+          {isPublishing ? <i className="fa-solid fa-spinner fa-spin"></i> : <i className="fa-solid fa-paper-plane"></i>} {buttonText}
         </button>
 
-        <p className="mt-[10px] text-[#555761] text-center text-[8px]">Publishing is currently part of the Kaalyug demo.</p>
+        <p className="mt-[10px] text-[#555761] text-center text-[8px]"><i className="fa-solid fa-circle-check mr-1"></i>Publishing is now live and connects to the backend database.</p>
       </div>
     </section>
   );
