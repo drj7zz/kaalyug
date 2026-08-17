@@ -11,13 +11,19 @@ connectDB();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const allowedOrigins = process.env.CLIENT_ORIGIN?.split(',').map((origin) => origin.trim()).filter(Boolean) || [];
+const configuredOrigins = process.env.CLIENT_ORIGIN?.split(',').map((origin) => origin.trim()).filter(Boolean) || [];
+const isAllowedOrigin = (origin) => {
+    if (!origin) return true;
+    if (configuredOrigins.includes(origin)) return true;
+    // Local Vite development and Vercel preview/production deployments.
+    return /^https?:\/\/localhost(?::\d+)?$/.test(origin) || /^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin);
+};
 
 app.disable('x-powered-by');
 app.use(cors({
     origin(origin, callback) {
         // Requests without an Origin header (health checks and server-to-server calls) are allowed.
-        if (!origin || allowedOrigins.includes(origin)) {
+        if (isAllowedOrigin(origin)) {
             return callback(null, true);
         }
         return callback(new Error('Origin is not allowed by CORS'));

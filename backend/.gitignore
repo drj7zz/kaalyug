@@ -1,4 +1,7 @@
-node_modules/
+# Local credentials — keep these on Render or in an untracked local .env file.
 .env
 .env.*
 !.env.example
+
+node_modules/
+*.log

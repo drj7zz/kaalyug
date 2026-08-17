@@ -11,6 +11,8 @@ import Footer from './components/Footer';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Admin from './pages/Admin';
+import YugcoinLogin from './pages/YugcoinLogin';
+import YugcoinRegister from './pages/YugcoinRegister';
 import { getSession } from './lib/auth';
 
 function Home() {
@@ -27,6 +29,8 @@ export default function App() {
     <Route path="/" element={<Home />} />
     <Route path="/login" element={<Login />} />
     <Route path="/register" element={<Register />} />
+    <Route path="/yugcoin/login" element={<YugcoinLogin />} />
+    <Route path="/yugcoin/register" element={<YugcoinRegister />} />
     <Route path="/admin" element={<RequireAdmin />} />
     <Route path="*" element={<Navigate to="/" replace />} />
   </Routes>;

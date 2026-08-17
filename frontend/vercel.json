@@ -1,3 +1,7 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    { "source": "/marketplace-api/:path*", "destination": "https://kaalyug-api.onrender.com/api/:path*" },
+    { "source": "/yugcoin-api/:path*", "destination": "https://yugcoin-backend.onrender.com/api/:path*" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }

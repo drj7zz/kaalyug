@@ -20,7 +20,7 @@ export default function Marketplace() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch(`${apiUrl}/api/projects`);
+        const response = await fetch(`${apiUrl}/projects`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

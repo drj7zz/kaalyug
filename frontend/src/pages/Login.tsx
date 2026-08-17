@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { apiUrl, readApiError } from '../lib/api';
+import { marketplaceApiUrl, readApiError } from '../lib/api';
 import { saveSession } from '../lib/auth';
 
 export default function Login() {
@@ -12,7 +12,7 @@ export default function Login() {
   const submit = async (event: FormEvent) => {
     event.preventDefault(); setLoading(true); setError('');
     try {
-      const response = await fetch(`${apiUrl}/api/users/login`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, password }) });
+      const response = await fetch(`${marketplaceApiUrl}/users/login`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, password }) });
       if (!response.ok) throw new Error(await readApiError(response, 'Unable to sign in'));
       const user = await response.json(); saveSession(user); navigate(user.role === 'admin' ? '/admin' : '/');
     } catch (err) { setError(err instanceof Error ? err.message : 'Server error. Please try again.'); } finally { setLoading(false); }
