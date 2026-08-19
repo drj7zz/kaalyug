@@ -1,19 +1,23 @@
-K A A L Y U G
+<div align="center">
 
-"THE DIGITAL ECOSYSTEM FOR BUILDERS"
+# KAALYUG
 
-<p align="center">Build · Publish · Discover · Exchange
+### THE DIGITAL ECOSYSTEM FOR BUILDERS
 
-<br>An open-source ecosystem connecting developers, creators, digital projects, marketplace distribution, and YugCoin-powered transactions.
+**Build · Publish · Discover · Exchange**
 
-</p><p align="center">"Status" (https://img.shields.io/badge/STATUS-ACTIVE_DEVELOPMENT-000000?style=for-the-badge&labelColor=111111)
-"Open Source" (https://img.shields.io/badge/OPEN_SOURCE-YES-000000?style=for-the-badge&labelColor=111111)
-"Platform" (https://img.shields.io/badge/PLATFORM-WEB-000000?style=for-the-badge&labelColor=111111)
-"Ecosystem" (https://img.shields.io/badge/ECOSYSTEM-KAALYUG-000000?style=for-the-badge&labelColor=111111)
+An open-source ecosystem connecting developers, creators, digital projects, marketplace distribution, and YugCoin-powered transactions.
 
-</p>---
+![Status](https://img.shields.io/badge/STATUS-ACTIVE_DEVELOPMENT-000000?style=for-the-badge&labelColor=111111)
+![Open Source](https://img.shields.io/badge/OPEN_SOURCE-YES-000000?style=for-the-badge&labelColor=111111)
+![Platform](https://img.shields.io/badge/PLATFORM-WEB-000000?style=for-the-badge&labelColor=111111)
+![Ecosystem](https://img.shields.io/badge/ECOSYSTEM-KAALYUG-000000?style=for-the-badge&labelColor=111111)
 
-"01" — THE IDEA
+</div>
+
+---
+
+## 01 — The Idea
 
 The internet is full of people building things.
 
@@ -21,37 +25,38 @@ Projects are created in one place, showcased somewhere else, distributed through
 
 Kaalyug is built around connecting that lifecycle.
 
-       CREATE
-          │
-          ▼
-       PUBLISH
-          │
-          ▼
-       DISCOVER
-          │
-          ▼
-        USE
-          │
-          ▼
-       EXCHANGE
-          │
-          ▼
-        GROW
+```
+   CREATE
+     │
+     ▼
+   PUBLISH
+     │
+     ▼
+   DISCOVER
+     │
+     ▼
+    USE
+     │
+     ▼
+   EXCHANGE
+     │
+     ▼
+    GROW
+```
 
-Kaalyug turns a digital project into more than a repository.
-
-It becomes a discoverable, presentable, distributable object inside an ecosystem.
+Kaalyug turns a digital project into more than a repository. It becomes a discoverable, presentable, distributable object inside an ecosystem.
 
 ---
 
-"02" — WHAT IS KAALYUG?
+## 02 — What Is Kaalyug?
 
 Kaalyug is an open-source digital ecosystem and marketplace for software projects and digital creations.
 
 Creators can publish projects, users can discover them, developers can contribute to them, and eligible projects can be distributed through a free or paid model.
 
-At the center of the ecosystem is YugCoin — the connected wallet and transaction engine designed to handle marketplace payments.
+At the center of the ecosystem is **YugCoin** — the connected wallet and transaction engine designed to handle marketplace payments.
 
+```mermaid
 flowchart TD
     A[CREATOR] --> B[PROJECT]
     B --> C[KAALYUG]
@@ -64,53 +69,51 @@ flowchart TD
     I --> J[YUGCOIN]
     J --> K[TRANSACTION]
     K --> L[CREATOR]
+```
 
 ---
 
-"03" — THE ECOSYSTEM
+## 03 — The Ecosystem
 
-Kaalyug is not just one page or one marketplace.
+Kaalyug is not just one page or one marketplace. It is designed as a collection of connected layers.
 
-It is designed as a collection of connected layers.
-
-Layer| Purpose
-Discovery| Find projects, tools, applications and creations
-Creators| Give builders a public identity
-Projects| Present complete projects in a structured format
-Marketplace| Distribute free and paid digital products
-Community| Connect people around projects
-YugCoin| Provide the wallet and transaction layer
-Open Source| Enable contribution, transparency and collaboration
+| Layer | Purpose |
+|---|---|
+| Discovery | Find projects, tools, applications and creations |
+| Creators | Give builders a public identity |
+| Projects | Present complete projects in a structured format |
+| Marketplace | Distribute free and paid digital products |
+| Community | Connect people around projects |
+| YugCoin | Provide the wallet and transaction layer |
+| Open Source | Enable contribution, transparency and collaboration |
 
 The ecosystem can grow without forcing every component into a single responsibility.
 
 ---
 
-"04" — PROJECTS
+## 04 — Projects
 
-A project on Kaalyug isn't simply:
+A project on Kaalyug isn't simply `project.zip`. It is a structured digital product.
 
-project.zip
-
-It is a structured digital product.
-
+```
 ┌───────────────────────────────────────────┐
-│                                           │
+│                                            │
 │              PROJECT PREVIEW              │
-│                                           │
+│                                            │
 ├───────────────────────────────────────────┤
 │  Name                                     │
 │  Creator                                  │
 │  Description                              │
-│                                           │
+│                                            │
 │  Features                                 │
 │  Version                                  │
 │  Documentation                            │
 │  Repository                               │
-│                                           │
+│                                            │
 │  Distribution       FREE / PAID           │
-│                                           │
+│                                            │
 └───────────────────────────────────────────┘
+```
 
 Projects can contain:
 
@@ -126,64 +129,69 @@ Projects can contain:
 
 ---
 
-"05" — FREE × PAID
+## 05 — Free × Paid
 
 Kaalyug intentionally supports both sides of digital distribution.
 
-OPEN
+**Open**
 
 Projects can be published freely for the community.
 
-       CREATOR
-          │
-          ▼
-       PROJECT
-          │
-          ▼
-      COMMUNITY
-          │
-          ├── USE
-          ├── STUDY
-          ├── SHARE
-          └── CONTRIBUTE
+```
+   CREATOR
+     │
+     ▼
+   PROJECT
+     │
+     ▼
+  COMMUNITY
+     │
+     ├── USE
+     ├── STUDY
+     ├── SHARE
+     └── CONTRIBUTE
+```
 
-MARKETPLACE
+**Marketplace**
 
 Creators can also publish projects as paid digital products.
 
-       CREATOR
-          │
-          ▼
-       PROJECT
-          │
-          ▼
-      MARKETPLACE
-          │
-          ▼
-        BUYER
-          │
-          ▼
-       YUGCOIN
-          │
-          ▼
-      TRANSACTION
+```
+   CREATOR
+     │
+     ▼
+   PROJECT
+     │
+     ▼
+  MARKETPLACE
+     │
+     ▼
+    BUYER
+     │
+     ▼
+   YUGCOIN
+     │
+     ▼
+  TRANSACTION
+```
 
 The same ecosystem therefore supports open collaboration and creator monetization.
 
 ---
 
-"06" — YUGCOIN
+## 06 — YugCoin
 
-The transaction layer.
+**The transaction layer.**
 
 YugCoin (YC) is the wallet engine designed for the Kaalyug ecosystem.
 
-It is a digital wallet/payment system, not a public cryptocurrency.
+> It is a digital wallet/payment system, not a public cryptocurrency.
 
 YugCoin is responsible for the financial logic of the ecosystem while Kaalyug remains responsible for the marketplace experience.
 
-Separation of responsibilities
+**Separation of responsibilities**
 
+```mermaid
 flowchart LR
     K[KAALYUG] -->|API| Y[YUGCOIN]
 
@@ -196,19 +204,17 @@ flowchart LR
     Y --> Y2[Balances]
     Y --> Y3[Transfers]
     Y --> Y4[Transactions]
+```
 
-This separation is intentional.
-
-Kaalyug knows what is being purchased.
-
-YugCoin knows how the transaction happens.
+This separation is intentional. Kaalyug knows *what* is being purchased. YugCoin knows *how* the transaction happens.
 
 ---
 
-"07" — THE PAYMENT ENGINE
+## 07 — The Payment Engine
 
 A marketplace purchase follows a controlled path:
 
+```mermaid
 sequenceDiagram
     participant U as User
     participant K as Kaalyug
@@ -225,95 +231,87 @@ sequenceDiagram
     Y-->>K: Payment confirmed
     K->>K: Mark order as paid
     K-->>U: Grant project access
+```
 
 The important principle:
 
-«Kaalyug does not directly modify wallet balances.»
+> Kaalyug does not directly modify wallet balances.
 
 The wallet engine remains responsible for the actual transaction.
 
 ---
 
-"08" — WALLET PREVIEW
+## 08 — Wallet Preview
 
 YugCoin is designed to feel native to the Kaalyug experience.
 
 A lightweight wallet preview can appear inside the marketplace:
 
+```
 ╭─────────────────────────────────╮
 │  YUGCOIN                        │
-│                                 │
-│  AVAILABLE BALANCE              │
-│  1,250.50 YC                    │
-│                                 │
-│  YC •••••• 291                  │
-│                                 │
-│  ● WALLET CONNECTED             │
-│                                 │
-│  ─────────────────────────────  │
-│          OPEN WALLET            │
+│                                  │
+│  AVAILABLE BALANCE               │
+│  1,250.50 YC                     │
+│                                  │
+│  YC •••••• 291                   │
+│                                  │
+│  ● WALLET CONNECTED              │
+│                                  │
+│  ─────────────────────────────   │
+│          OPEN WALLET             │
 ╰─────────────────────────────────╯
+```
 
 And during checkout:
 
+```
 ╭─────────────────────────────────╮
-│  KAALYUG CHECKOUT               │
-│                                 │
-│  Project              250 YC    │
-│                                 │
-│  Wallet balance     1,250 YC    │
-│  After payment      1,000 YC    │
-│                                 │
-│  ─────────────────────────────  │
-│                                 │
-│          PAY 250 YC             │
+│  KAALYUG CHECKOUT                │
+│                                  │
+│  Project              250 YC     │
+│                                  │
+│  Wallet balance     1,250 YC     │
+│  After payment      1,000 YC     │
+│                                  │
+│  ─────────────────────────────   │
+│                                  │
+│          PAY 250 YC              │
 ╰─────────────────────────────────╯
+```
 
-The objective is simple:
-
-The wallet should feel like part of Kaalyug — not an unrelated application.
+The objective is simple: the wallet should feel like part of Kaalyug — not an unrelated application.
 
 ---
 
-"09" — API ARCHITECTURE
+## 09 — API Architecture
 
-YugCoin already contains the wallet engine.
+YugCoin already contains the wallet engine. The API becomes the controlled interface through which other applications communicate with it.
 
-The API becomes the controlled interface through which other applications communicate with it.
-
-                  EXTERNAL APP
-                       │
-                       │ HTTPS
-                       ▼
-              ┌─────────────────┐
-              │   YUGCOIN API   │
-              └────────┬────────┘
-                       │
-                       ▼
-              ┌─────────────────┐
-              │  WALLET ENGINE  │
-              └────────┬────────┘
-                       │
-                       ▼
-                  DATABASE
+```mermaid
+flowchart TD
+    A[EXTERNAL APP] -->|HTTPS| B[YUGCOIN API]
+    B --> C[WALLET ENGINE]
+    C --> D[(DATABASE)]
+```
 
 Example endpoints can include:
 
+```
 GET  /api/wallet/balance
 POST /api/payments
 GET  /api/payments/:reference
 GET  /api/transactions/:reference
+```
 
-The API does not duplicate the wallet logic.
-
-It exposes the existing engine through controlled, authenticated routes.
+The API does not duplicate the wallet logic. It exposes the existing engine through controlled, authenticated routes.
 
 ---
 
-"10" — SYSTEM ARCHITECTURE
+## 10 — System Architecture
 
+```mermaid
 flowchart TB
-
     USER[USER]
 
     subgraph K[KAALYUG]
@@ -346,38 +344,28 @@ flowchart TB
     YB --> YE
     YE --> YT
     YT --> DB
+```
 
-Architecture principle
-
-Separate the responsibilities. Connect the systems.
+**Architecture principle:** Separate the responsibilities. Connect the systems.
 
 This keeps the marketplace and wallet engine independently maintainable.
 
 ---
 
-"11" — SECURITY MODEL
+## 11 — Security Model
 
 The frontend should never be trusted with sensitive transaction decisions.
 
 The intended request path is:
 
-USER
-  │
-  ▼
-KAALYUG FRONTEND
-  │
-  ▼
-KAALYUG BACKEND
-  │
-  │ authenticated request
-  ▼
-YUGCOIN API
-  │
-  ▼
-WALLET ENGINE
-  │
-  ▼
-DATABASE
+```mermaid
+flowchart TD
+    A[USER] --> B[KAALYUG FRONTEND]
+    B --> C[KAALYUG BACKEND]
+    C -->|Authenticated Request| D[YUGCOIN API]
+    D --> E[WALLET ENGINE]
+    E --> F[(DATABASE)]
+```
 
 Core principles:
 
@@ -394,55 +382,229 @@ Core principles:
 
 ---
 
-"12" — BUILT FOR REAL HARDWARE
+## 12 — Built for Real Hardware
 
 Kaalyug is designed with a practical constraint:
 
-«Good software should not require expensive hardware.»
+> Good software should not require expensive hardware.
 
 The platform aims to remain usable across:
 
-LOW-END PHONES
-       +
-OLDER LAPTOPS
-       +
-LIMITED HARDWARE
-       +
-SLOWER NETWORKS
-       =
-ACCESSIBLE ECOSYSTEM
+**Low-end phones + Older laptops + Limited hardware + Slower networks = Accessible ecosystem**
 
 Performance is therefore considered part of the product.
 
-The goal is not:
-
-"Make it look impressive at any cost."
-
-The goal is:
-
-"Make it look impressive while remaining usable."
+The goal is **not** "make it look impressive at any cost." The goal is "make it look impressive while remaining usable."
 
 ---
 
-"13" — DESIGN LANGUAGE
+## 13 — Design Language
 
 Kaalyug follows a deliberately restrained visual direction.
 
-DARK
+| Principle | Description |
+|---|---|
+| **Dark** | A strong dark interface creates the foundation |
+| **Clean** | Information should remain understandable before decoration takes over |
+| **Technical** | The visual language reflects the developer-focused nature of the ecosystem |
+| **Premium** | Projects and creators should feel like first-class products |
+| **Responsive** | The experience should adapt rather than simply shrink |
+| **Purposeful** | Motion, effects and visual elements should communicate something |
 
-A strong dark interface creates the foundation.
+---
 
-CLEAN
+## 14 — Open Source
 
-Information should remain understandable before decoration takes over.
+Kaalyug is being developed as an open-source project.
 
-TECHNICAL
+The repository is intended to provide a foundation that developers can inspect, learn from, modify and contribute to.
 
-The visual language reflects the developer-focused nature of the ecosystem.
+```mermaid
+flowchart TD
+    A[OPEN SOURCE] --> B[INSPECT]
+    A --> C[BUILD]
+    A --> D[CONTRIBUTE]
+    B --> E[IMPROVE]
+    C --> E
+    D --> E
+    E --> F[KAALYUG]
+```
 
-PREMIUM
+Contributions can include:
 
-Projects and creators should feel like first-class products.
+- Bug fixes
+- UI improvements
+- Performance improvements
+- New marketplace capabilities
+- API integrations
+- Documentation
+- Security improvements
+- Developer tooling
+- Ecosystem ideas
+
+The project should include an appropriate open-source `LICENSE` file defining how others may use, modify and distribute the software.
+
+---
+
+## 15 — Contribution Flow
+
+```mermaid
+flowchart TD
+    A[IDEA] --> B[ISSUE]
+    B --> C[FORK]
+    C --> D[BRANCH]
+    D --> E[DEVELOP]
+    E --> F[TEST]
+    F --> G[PULL REQUEST]
+    G --> H[REVIEW]
+    H --> I[MERGE]
+    I --> J[RELEASE]
+```
+
+Kaalyug is designed to grow with its contributors rather than only through its original implementation.
+
+---
+
+## 16 — Development Roadmap
+
+**Foundation**
+- Core UI
+- Marketplace foundation
+- Project discovery
+- Creator profiles
+- Responsive experience
+
+**Publishing**
+- Project publishing
+- Project versions
+- Project previews
+- Free distribution
+- Paid distribution
+
+**YugCoin**
+- Wallet integration
+- Balance preview
+- Payment API
+- Marketplace checkout
+- Transaction references
+
+**Ecosystem**
+- Community
+- Analytics
+- Reviews
+- Creator tools
+- Collaboration
+- Mobile applications
+- Additional ecosystem services
+
+The roadmap is intentionally evolutionary. Features should be introduced when their underlying systems are ready.
+
+---
+
+## 17 — Versioning
+
+Kaalyug follows an incremental product-development philosophy.
+
+| Version | Focus |
+|---|---|
+| **v1.0** | Foundation — Core experience |
+| **v1.1** | Refinement — Marketplace improvements |
+| **v1.2** | Publishing — Creator systems |
+| **v1.3** | YugCoin — Transaction integration |
+| **v1.x** | Ecosystem expansion |
+
+Versions should represent meaningful milestones rather than arbitrary changes.
+
+---
+
+## 18 — The Bigger Picture
+
+The long-term model looks like this:
+
+```mermaid
+flowchart LR
+    A[IDEA] --> B[BUILD]
+    B --> C[PUBLISH]
+    C --> D[DISCOVER]
+    D --> E[USE]
+    E --> F{DISTRIBUTE}
+    F --> G[FREE]
+    F --> H[PAID]
+    H --> I[YUGCOIN]
+    G --> J[COMMUNITY]
+    I --> J
+    J --> K[CONTRIBUTE]
+    K --> L[IMPROVE]
+    L --> B
+```
+
+This creates a continuous loop:
+
+> Build → Publish → Discover → Use → Contribute → Build again.
+
+That loop is the core idea behind Kaalyug.
+
+---
+
+## 19 — Why Kaalyug?
+
+Because a project should be able to become more than a repository. It should have:
+
+- **Identity** — Creator, Version, Preview, Documentation
+- **Discovery** — Search, Categories, Community
+- **Distribution** — Free, Paid
+- **Transaction** — YugCoin
+- **Community** — Contribution, Collaboration
+
+Kaalyug brings these concepts together into one ecosystem.
+
+---
+
+## 20 — Current Status
+
+**Active Development**
+
+Kaalyug is an evolving project. The current architecture establishes the foundation for:
+
+- Digital project discovery
+- Creator-oriented publishing
+- Marketplace distribution
+- Free and paid projects
+- YugCoin integration
+- Open-source collaboration
+- Low-end device accessibility
+
+Some ecosystem capabilities represent the planned direction of the platform and will be introduced progressively.
+
+---
+
+## 21 — Philosophy
+
+```mermaid
+flowchart TD
+    A[BUILD] --> B[PUBLISH]
+    B --> C[DISCOVER]
+    C --> D[USE]
+    D --> E[CONTRIBUTE]
+    E --> F[GROW]
+    F --> A
+```
+
+Build something. Put it into the ecosystem. Let it evolve.
+
+---
+
+<div align="center">
+
+### KAALYUG
+
+**BUILD • PUBLISH • DISCOVER • EXCHANGE**
+
+An open-source digital ecosystem for creators and builders.
+
+© Kaalyug — Open Source — Active Development
+
+</div>
 
 RESPONSIVE
 
