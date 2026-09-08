@@ -55,7 +55,7 @@ app.use((err, _req, res, _next) => {
     if (err.message === 'Origin is not allowed by CORS') {
         return res.status(403).json({ message: 'Origin is not allowed' });
     }
-    return res.status(500).json({ message: 'Internal server error' });
+    return res.status(500).json({ message: 'Internal server error' ,errorMessage: err.message});
 });
 
 app.listen(PORT, '0.0.0.0', () => {
