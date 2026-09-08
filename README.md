@@ -628,6 +628,32 @@ Build something. Put it into the ecosystem. Let it evolve.
 
 ---
 
+## 23 — Quick Start
+
+### Prerequisites
+- Node.js (`>=20 <23`)
+- MongoDB running locally or a MongoDB Atlas URI
+
+### 1. Backend Setup
+```bash
+cd backend
+npm install
+cp .env.example .env
+npm run dev
+```
+The API starts on `http://localhost:5000`.
+
+### 2. Frontend Setup
+```bash
+cd frontend
+npm install
+cp .env.example .env
+npm run dev
+```
+The application opens on `http://localhost:5173`.
+
+---
+
 <div align="center">
 
 ### KAALYUG
