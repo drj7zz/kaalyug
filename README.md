@@ -442,6 +442,8 @@ Contributions can include:
 - Developer tooling
 - Ecosystem ideas
 
+> A public repository alone does not make software open source. Licensing is what grants others the permissions to use, modify and distribute it.
+
 The project should include an appropriate open-source `LICENSE` file defining how others may use, modify and distribute the software.
 
 ---
@@ -465,7 +467,39 @@ Kaalyug is designed to grow with its contributors rather than only through its o
 
 ---
 
-## 16 — Development Roadmap
+## 16 — Project Structure
+
+The ecosystem is conceptually divided into independent responsibilities:
+
+```
+Kaalyug
+│
+├── Frontend
+│   ├── Marketplace
+│   ├── Discovery
+│   ├── Project pages
+│   ├── Creator profiles
+│   └── Wallet interface
+│
+├── Backend
+│   ├── Users
+│   ├── Projects
+│   ├── Marketplace
+│   ├── Orders
+│   └── YugCoin integration
+│
+└── Ecosystem
+    ├── Open-source projects
+    ├── Free projects
+    ├── Paid projects
+    └── Community contributions
+```
+
+The exact implementation may evolve as the platform develops.
+
+---
+
+## 17 — Development Roadmap
 
 **Foundation**
 - Core UI
@@ -501,7 +535,7 @@ The roadmap is intentionally evolutionary. Features should be introduced when th
 
 ---
 
-## 17 — Versioning
+## 18 — Versioning
 
 Kaalyug follows an incremental product-development philosophy.
 
@@ -517,7 +551,7 @@ Versions should represent meaningful milestones rather than arbitrary changes.
 
 ---
 
-## 18 — The Bigger Picture
+## 19 — The Bigger Picture
 
 The long-term model looks like this:
 
@@ -546,7 +580,7 @@ That loop is the core idea behind Kaalyug.
 
 ---
 
-## 19 — Why Kaalyug?
+## 20 — Why Kaalyug?
 
 Because a project should be able to become more than a repository. It should have:
 
@@ -560,7 +594,7 @@ Kaalyug brings these concepts together into one ecosystem.
 
 ---
 
-## 20 — Current Status
+## 21 — Current Status
 
 **Active Development**
 
@@ -578,7 +612,7 @@ Some ecosystem capabilities represent the planned direction of the platform and 
 
 ---
 
-## 21 — Philosophy
+## 22 — Philosophy
 
 ```mermaid
 flowchart TD
@@ -605,385 +639,3 @@ An open-source digital ecosystem for creators and builders.
 © Kaalyug — Open Source — Active Development
 
 </div>
-
-RESPONSIVE
-
-The experience should adapt rather than simply shrink.
-
-PURPOSEFUL
-
-Motion, effects and visual elements should communicate something.
-
----
-
-
-
-<p align="center">KAALYUG
-
-"BUILD • PUBLISH • DISCOVER • EXCHANGE"
-
-An open-source digital ecosystem for creators and builders.
-
-<br>"© Kaalyug — Open Source — Active Development"
-
-</p>ms the actual operations.
-
-The API simply provides a controlled interface through which another application can communicate with it.
-
-External Application
-        │
-        │ HTTP Request
-        ▼
-   YugCoin API
-        │
-        ▼
- Existing Wallet Logic
-        │
-        ▼
-     Database
-
-This avoids duplicating wallet logic inside Kaalyug.
-
----
-
-Security Model
-
-Security is based on separation of responsibility.
-
-The browser should never be trusted with sensitive transaction decisions.
-
-USER
- │
- ▼
-KAALYUG FRONTEND
- │
- ▼
-KAALYUG BACKEND
- │
- │ authenticated request
- ▼
-YUGCOIN API
- │
- ▼
-WALLET ENGINE
- │
- ▼
-DATABASE
-
-Important principles include:
-
-- Server-side validation
-- Protected API credentials
-- Wallet balance verification
-- Unique transaction references
-- Order/payment IDs
-- Idempotent payment requests
-- Atomic transaction processing
-- Environment-based secrets
-- No private credentials in frontend code
-
----
-
-Built for Accessibility
-
-Kaalyug is designed with low-end devices and practical accessibility in mind.
-
-The objective is not simply to create a visually impressive platform.
-
-It should remain usable on:
-
-Older phones
-      +
-Budget hardware
-      +
-Slower networks
-      +
-Mobile browsers
-      +
-Desktop systems
-
-The design philosophy is:
-
-«Less unnecessary complexity. More usable technology.»
-
-Performance is treated as part of the product rather than an afterthought.
-
----
-
-Design Language
-
-Kaalyug aims for a visual identity that feels:
-
-Dark · Technical · Minimal · Premium · Experimental
-
-The interface should prioritize:
-
-- Strong visual hierarchy
-- Clean typography
-- Structured spacing
-- Responsive layouts
-- Subtle interaction
-- Purposeful motion
-- Clear information architecture
-
-Visual effects should support the interface rather than overwhelm it.
-
----
-
-Open Source
-
-Kaalyug is intended to be an open-source project and community-driven ecosystem.
-
-The source code is publicly available so developers can:
-
-- Inspect the implementation
-- Learn from the project
-- Report issues
-- Suggest improvements
-- Submit pull requests
-- Build integrations
-- Help shape the ecosystem
-
-Open source is not treated simply as a way to publish the repository.
-
-It is part of the project's philosophy:
-
-                  KAALYUG
-                     │
-              ┌──────┴──────┐
-              │             │
-            BUILD         SHARE
-              │             │
-              └──────┬──────┘
-                     │
-                     ▼
-                 COMMUNITY
-                     │
-                     ▼
-                 IMPROVEMENT
-
-For the repository to qualify as open source in the formal sense, it should be distributed under a recognized open-source license. GitHub notes that a public repository alone does not make software open source; licensing is what grants others the permissions to use, modify, and distribute it.
-
----
-
-Contribution Model
-
-Kaalyug is intended to grow through contributions from developers and creators.
-
-A typical contribution flow:
-
-                   IDEA
-                    │
-                    ▼
-                  ISSUE
-                    │
-                    ▼
-                  FORK
-                    │
-                    ▼
-                BRANCH
-                    │
-                    ▼
-                DEVELOP
-                    │
-                    ▼
-                TEST
-                    │
-                    ▼
-              PULL REQUEST
-                    │
-                    ▼
-                 REVIEW
-                    │
-                    ▼
-                 MERGE
-
-The project can use issues, pull requests, branches, contribution guidelines, and code ownership as it grows.
-
----
-
-Project Structure
-
-The ecosystem is conceptually divided into independent responsibilities:
-
-Kaalyug
-│
-├── Frontend
-│   ├── Marketplace
-│   ├── Discovery
-│   ├── Project pages
-│   ├── Creator profiles
-│   └── Wallet interface
-│
-├── Backend
-│   ├── Users
-│   ├── Projects
-│   ├── Marketplace
-│   ├── Orders
-│   └── YugCoin integration
-│
-└── Ecosystem
-    ├── Open-source projects
-    ├── Free projects
-    ├── Paid projects
-    └── Community contributions
-
-The exact implementation may evolve as the platform develops.
-
----
-
-Development Roadmap
-
-Kaalyug is intentionally being developed incrementally.
-
-Phase I — Foundation
-
-Core platform
-     │
-     ├── UI
-     ├── Project discovery
-     ├── Creator profiles
-     └── Marketplace foundation
-
-Phase II — Publishing
-
-Publishing system
-     │
-     ├── Project submissions
-     ├── Project versions
-     ├── Free distribution
-     └── Paid distribution
-
-Phase III — YugCoin
-
-Marketplace
-     │
-     ▼
-YugCoin API
-     │
-     ├── Balance
-     ├── Payments
-     ├── Transactions
-     └── References
-
-Phase IV — Ecosystem
-
-Community
-    +
-Creators
-    +
-Projects
-    +
-Marketplace
-    +
-YugCoin
-    │
-    ▼
-KAALYUG ECOSYSTEM
-
-The roadmap is intentionally flexible. Features should be introduced when the underlying platform is ready rather than added simply to increase the feature count.
-
----
-
-Long-Term Vision
-
-The long-term objective is to build a platform where the lifecycle of a digital project can exist inside one ecosystem:
-
-                 ┌─────────────┐
-                 │    IDEA     │
-                 └──────┬──────┘
-                        │
-                        ▼
-                 ┌─────────────┐
-                 │    BUILD    │
-                 └──────┬──────┘
-                        │
-                        ▼
-                 ┌─────────────┐
-                 │   PUBLISH   │
-                 └──────┬──────┘
-                        │
-                        ▼
-                 ┌─────────────┐
-                 │  DISCOVER   │
-                 └──────┬──────┘
-                        │
-                ┌───────┴───────┐
-                ▼               ▼
-             FREE             PAID
-                │               │
-                │               ▼
-                │            YUGCOIN
-                │               │
-                └───────┬───────┘
-                        ▼
-                  USE / SHARE
-                        │
-                        ▼
-                    CONTRIBUTE
-                        │
-                        ▼
-                     GROW
-
-Kaalyug's ambition is not to become another generic project directory.
-
-It is to become a developer-first digital ecosystem where projects can move from creation to distribution and community adoption without losing their identity along the way.
-
----
-
-Current Status
-
-Active development
-
-Kaalyug is an evolving open-source project. Architecture, interfaces, APIs, marketplace functionality, and ecosystem features will continue to change as the platform develops.
-
-Some concepts described in this README represent the planned architecture and product direction, rather than claiming that every feature is already production-ready.
-
----
-
-License
-
-Kaalyug is intended to be released as open-source software.
-
-The repository should contain a dedicated "LICENSE" file specifying the exact license and permissions.
-
-Recommended repository structure:
-
-.
-├── README.md
-├── LICENSE
-├── CONTRIBUTING.md
-├── CODE_OF_CONDUCT.md
-└── ...
-
-The final license should be selected based on how much freedom you want to give users to modify, redistribute, or commercially use the project.
-
----
-
-The Principle
-
-                 BUILD SOMETHING.
-                       │
-                       ▼
-                 PUT IT OUT THERE.
-                       │
-                       ▼
-                  LET PEOPLE USE IT.
-                       │
-                       ▼
-                 LET PEOPLE IMPROVE IT.
-                       │
-                       ▼
-                    BUILD MORE.
-
-Kaalyug is an ecosystem built around that loop.
-
----
-
-<p align="center">KAALYUG
-
-An open-source ecosystem for digital creators.
-
-"Build → Publish → Discover → Exchange → Grow"
-
-</p>
