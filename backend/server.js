@@ -3,6 +3,8 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 
+const walletRoutes = require("./routes/walletRoutes")
+
 dotenv.config();
 
 // Connect to database
@@ -46,6 +48,7 @@ app.get('/health', (_req, res) => {
 app.use('/api/projects', require('./routes/projectRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/admin', require('./routes/adminRoutes'));
+app.use("/api/wallet", walletRoutes)
 // app.use('/api/wallet', require('./routes/walletRoutes'));
 
 app.use((err, _req, res, _next) => {
