@@ -121,3 +121,7 @@ frontend/src/
 * **Navbar is responsive** — links wrap instead of disappearing on small screens; the logo mark is a flat teal tile (no gradient/glow).
 * **Typography fixed** — all the unreadable 7–9px labels bumped to 10–13px, body copy raised to 13–15px, headings use `clamp()` for sane scaling; full **Lato** typeface throughout.
 * **Primary buttons** (auth forms, register) are solid teal with dark text; project-card preview tiles use neutral gradients instead of colored glows.
+* **Cosmic whale logo (`public/logo.jpeg`)** now used in three places:
+  * **Navbar** — the logo tile is the actual whale artwork (`<img src="/logo.jpeg">`, rounded).
+  * **Favicon** — `index.html` links `/logo.jpeg` as the browser-tab icon.
+  * **Hero backdrop** — the landing hero renders the whale as a large dimmed background (28% opacity + dark gradient overlay) behind the headline, keeping text fully readable.

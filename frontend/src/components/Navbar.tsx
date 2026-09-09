@@ -44,9 +44,7 @@ export default function Navbar() {
   return (
     <nav className="sticky top-[14px] z-[100] w-[min(94%,1150px)] mx-auto mt-[14px] px-[18px] py-[11px] flex items-center justify-between border border-[rgba(255,255,255,0.1)] rounded-[22px] bg-[rgba(9,9,14,0.72)] backdrop-blur-[28px] shadow-[inset_0_1px_rgba(255,255,255,0.07),0_20px_60px_rgba(0,0,0,0.35)]">
       <Link to="/" className="flex items-center gap-[10px] no-underline">
-        <div className="w-[40px] h-[40px] grid place-items-center rounded-[13px] text-[20px] font-extrabold text-[#0b0b0d] bg-[#71e5d1]">
-          K
-        </div>
+        <img src="/logo.jpeg" alt="Kaalyug logo" className="w-[40px] h-[40px] rounded-[13px] object-cover" />
         <div className="font-extrabold tracking-[0.08em] leading-tight text-white">
           KAALYUG
           <small className="block mt-[2px] text-[#6e707a] text-[8px] font-medium tracking-[0.04em]">

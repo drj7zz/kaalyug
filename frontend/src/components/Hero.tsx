@@ -1,6 +1,14 @@
 export default function Hero() {
   return (
-    <section className="min-h-[520px] md:min-h-[600px] pt-[70px] md:pt-[90px] pb-[70px] text-center flex flex-col items-center justify-center w-[min(92%,1000px)] mx-auto">
+    <section className="relative min-h-[620px] md:min-h-[720px] pt-[70px] md:pt-[90px] pb-[70px] text-center flex flex-col items-center justify-center w-full overflow-hidden">
+      {/* cosmic whale backdrop */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-center bg-cover bg-no-repeat opacity-[0.28]"
+        style={{ backgroundImage: "url('/logo.jpeg')" }}
+      />
+      <div aria-hidden className="absolute inset-0 -z-10" style={{ background: "linear-gradient(180deg, rgba(5,5,7,0.55), rgba(5,5,7,0.25) 45%, rgba(5,5,7,0.95))" }} />
+
       <div className="inline-flex items-center gap-[8px] px-[14px] py-[8px] rounded-[30px] text-[#a9ede1] bg-[rgba(113,229,209,0.07)] border border-[rgba(113,229,209,0.22)] text-[11px] tracking-[0.06em] font-medium">
         <span className="w-[6px] h-[6px] rounded-full bg-[#71e5d1]"></span>
         OPEN-SOURCE DIGITAL ECOSYSTEM
