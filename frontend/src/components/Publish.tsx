@@ -74,18 +74,18 @@ export default function Publish() {
   return (
     <section id="publish" className="w-[min(92%,1100px)] mx-auto mt-[90px] grid grid-cols-1 md:grid-cols-2 gap-[25px]">
       <div className="md:self-center py-[25px] px-[10px] md:py-[40px] md:px-[15px]">
-        <div className="inline-flex items-center gap-[8px] px-[11px] py-[7px] rounded-[30px] text-[#c0adff] bg-[rgba(150,90,255,0.08)] border border-[rgba(150,90,255,0.18)] text-[9px] tracking-[0.08em]">
-          <span className="w-[5px] h-[5px] rounded-full bg-[#a366ff] shadow-[0_0_12px_#a366ff]"></span>
+        <div className="inline-flex items-center gap-[8px] px-[12px] py-[7px] rounded-[30px] text-[#a9ede1] bg-[rgba(113,229,209,0.07)] border border-[rgba(113,229,209,0.22)] text-[10px] tracking-[0.08em] font-medium">
+          <span className="w-[5px] h-[5px] rounded-full bg-[#71e5d1]"></span>
           FOR DEVELOPERS & CREATORS
         </div>
 
-        <h2 className="mt-[22px] text-[clamp(36px,4vw,55px)] leading-none tracking-[-2.5px] font-bold">
+        <h2 className="mt-[22px] text-[clamp(32px,4vw,48px)] leading-[1.05] tracking-[-1.5px] font-bold">
           Built something?
           <br />
           <span className="text-gradient">Publish it to Kaalyug.</span>
         </h2>
 
-        <p className="max-w-[470px] mt-[22px] text-[#858792] text-[13px] leading-[1.8]">
+        <p className="max-w-[470px] mt-[22px] text-[#a3a5b0] text-[14px] leading-[1.75]">
           Turn your complete project into a discoverable Kaalyug product. Publish it as free or paid, showcase the author, connect the source code, and eventually receive YugCoin through ecosystem activity.
         </p>
 
@@ -97,8 +97,8 @@ export default function Publish() {
             { num: "04", text: "YugCoin Economy" },
           ].map((point, i) => (
             <div key={i} className="p-[14px] flex items-center gap-[12px] border border-[rgba(255,255,255,0.07)] rounded-[14px] bg-[rgba(255,255,255,0.025)]">
-              <b className="text-[#765d9d] text-[9px]">{point.num}</b>
-              <span className="text-[#b4b5be] text-[10px]">{point.text}</span>
+              <b className="text-[#71dfcc] text-[10px]">{point.num}</b>
+              <span className="text-[#c3c4cd] text-[12px]">{point.text}</span>
             </div>
           ))}
         </div>
@@ -107,7 +107,7 @@ export default function Publish() {
       <div className="publish-card-bg relative p-[25px] overflow-hidden rounded-[27px] border border-[rgba(255,255,255,0.13)] backdrop-blur-[30px] shadow-[inset_0_1px_rgba(255,255,255,0.09),0_30px_90px_rgba(0,0,0,0.4)]">
         <div className="relative flex justify-between items-start">
           <div>
-            <span className="text-[#777984] text-[8px] tracking-[0.15em]">NEW PROJECT</span>
+            <span className="text-[#9b9da8] text-[10px] tracking-[0.15em]">NEW PROJECT</span>
             <h3 className="mt-[6px] text-[17px] font-bold">Publish to Kaalyug</h3>
           </div>
           <div className="px-[9px] py-[6px] rounded-[8px] text-[#888a95] bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.08)] text-[8px]">
@@ -118,7 +118,7 @@ export default function Publish() {
         {error && <div className="mt-4 p-2 bg-red-500/20 border border-red-500/50 rounded-lg text-red-400 text-xs text-center">{error}</div>}
 
         <div className="mt-[22px] pb-[18px] flex items-center gap-[11px] border-b border-[rgba(255,255,255,0.07)]">
-          <div className="w-[35px] h-[35px] grid place-items-center rounded-[11px] text-[13px] font-bold bg-gradient-to-br from-[#784bff] to-[#4fcfff] shadow-[0_0_20px_rgba(120,70,255,0.25)] text-white">
+          <div className="w-[35px] h-[35px] grid place-items-center rounded-[11px] text-[13px] font-bold text-[#0b0b0d] bg-[#71e5d1]">
             {formData.name.charAt(0).toUpperCase() || "K"}
           </div>
           <div>
@@ -128,36 +128,36 @@ export default function Publish() {
         </div>
 
         <div className="relative mt-[17px]">
-          <label className="block mb-[7px] text-[#676974] text-[8px] tracking-[0.1em]">PROJECT NAME</label>
+          <label className="block mb-[7px] text-[#9b9da8] text-[10px] tracking-[0.1em] font-medium">PROJECT NAME</label>
           <input
             name="name"
             value={formData.name}
             onChange={handleInputChange}
             placeholder="My Awesome Project"
-            className="w-full min-h-[38px] flex items-center justify-between px-[12px] py-[10px] rounded-[11px] text-[#a9aab4] bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[12px] outline-none focus:border-[#7647ff] transition-colors"
+            className="w-full min-h-[38px] flex items-center justify-between px-[12px] py-[10px] rounded-[11px] text-[#c3c4cd] bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[13px] outline-none focus:border-[#71e5d1] transition-colors"
           />
         </div>
 
         <div className="relative mt-[17px]">
-          <label className="block mb-[7px] text-[#676974] text-[8px] tracking-[0.1em]">DESCRIPTION</label>
+          <label className="block mb-[7px] text-[#9b9da8] text-[10px] tracking-[0.1em] font-medium">DESCRIPTION</label>
           <textarea
             name="description"
             value={formData.description}
             onChange={handleInputChange}
             placeholder="A complete project built for the community..."
             rows={3}
-            className="w-full min-h-[48px] flex items-start px-[12px] py-[10px] rounded-[11px] text-[#a9aab4] bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[12px] outline-none focus:border-[#7647ff] transition-colors resize-none"
+            className="w-full min-h-[48px] flex items-start px-[12px] py-[10px] rounded-[11px] text-[#c3c4cd] bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[13px] outline-none focus:border-[#71e5d1] transition-colors resize-none"
           />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[10px] mt-[17px]">
           <div className="relative">
-            <label className="block mb-[7px] text-[#676974] text-[8px] tracking-[0.1em]">CATEGORY</label>
+            <label className="block mb-[7px] text-[#9b9da8] text-[10px] tracking-[0.1em] font-medium">CATEGORY</label>
             <select
               name="category"
               value={formData.category}
               onChange={handleInputChange}
-              className="w-full min-h-[38px] flex items-center justify-between px-[12px] py-[10px] rounded-[11px] text-[#a9aab4] bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[12px] outline-none focus:border-[#7647ff] transition-colors appearance-none"
+              className="w-full min-h-[38px] flex items-center justify-between px-[12px] py-[10px] rounded-[11px] text-[#c3c4cd] bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[13px] outline-none focus:border-[#71e5d1] transition-colors"
             >
               <option value="development">Web Development</option>
               <option value="ui">UI / Components</option>
@@ -166,12 +166,12 @@ export default function Publish() {
             </select>
           </div>
           <div className="relative">
-            <label className="block mb-[7px] text-[#676974] text-[8px] tracking-[0.1em]">PROJECT TYPE</label>
+            <label className="block mb-[7px] text-[#9b9da8] text-[10px] tracking-[0.1em] font-medium">PROJECT TYPE</label>
             <select
               name="tag"
               value={formData.tag}
               onChange={handleInputChange}
-              className="w-full min-h-[38px] flex items-center justify-between px-[12px] py-[10px] rounded-[11px] text-[#a9aab4] bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[12px] outline-none focus:border-[#7647ff] transition-colors appearance-none"
+              className="w-full min-h-[38px] flex items-center justify-between px-[12px] py-[10px] rounded-[11px] text-[#c3c4cd] bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[13px] outline-none focus:border-[#71e5d1] transition-colors appearance-none"
             >
               <option value="Complete Project">Complete Project</option>
               <option value="Open Source">Open Source</option>
@@ -181,7 +181,7 @@ export default function Publish() {
         </div>
 
         <div className="relative mt-[17px]">
-          <label className="block mb-[7px] text-[#676974] text-[8px] tracking-[0.1em]">PROJECT ACCESS</label>
+          <label className="block mb-[7px] text-[#9b9da8] text-[10px] tracking-[0.1em] font-medium">PROJECT ACCESS</label>
           <div className="grid grid-cols-2 gap-[8px]">
             <div
               className={`p-[11px] rounded-[11px] cursor-pointer ${
@@ -209,7 +209,7 @@ export default function Publish() {
         </div>
 
         <div className="relative mt-[17px]">
-          <label className="block mb-[7px] text-[#676974] text-[8px] tracking-[0.1em]">SOURCE / DEMO</label>
+          <label className="block mb-[7px] text-[#9b9da8] text-[10px] tracking-[0.1em] font-medium">SOURCE / DEMO</label>
           <div className="relative w-full">
             <i className="fa-brands fa-github absolute left-[12px] top-1/2 -translate-y-1/2 text-[#676974] text-[12px]"></i>
             <input
@@ -224,14 +224,14 @@ export default function Publish() {
 
         <button
           className="btn-hover w-full mt-[20px] p-[13px] border-0 rounded-[13px] text-white text-[10px] font-semibold flex justify-center items-center gap-[6px] shadow-[0_10px_30px_rgba(110,70,255,0.25)]"
-          style={{ background: isPublishing ? "linear-gradient(100deg,#36c9a5,#51d7c2)" : "linear-gradient(100deg,#51c9ff,#9853ff)" }}
+          style={{ background: isPublishing ? "linear-gradient(100deg,#4ecdb4,#71e5d1)" : "linear-gradient(100deg,#71e5d1,#9be8dc)" }}
           onClick={handlePublish}
           disabled={isPublishing}
         >
           {isPublishing ? <i className="fa-solid fa-spinner fa-spin"></i> : <i className="fa-solid fa-paper-plane"></i>} {buttonText}
         </button>
 
-        <p className="mt-[10px] text-[#555761] text-center text-[8px]"><i className="fa-solid fa-circle-check mr-1"></i>Publishing is now live and connects to the backend database.</p>
+        <p className="mt-[10px] text-[#7d7f89] text-center text-[10px]"><i className="fa-solid fa-circle-check mr-1"></i>Publishing is live and connects to the backend database.</p>
       </div>
     </section>
   );
