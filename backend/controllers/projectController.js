@@ -43,7 +43,20 @@ const createProject = async (req, res) => {
     }
 };
 
+// @desc    Fetch projects owned by the authenticated user
+// @route   GET /api/projects/mine
+// @access  Private
+const getMyProjects = async (req, res) => {
+    try {
+        const projects = await Project.find({ author: req.user._id }).sort({ createdAt: -1 });
+        res.json(projects);
+    } catch (error) {
+        res.status(500).json({ message: 'Server Error' });
+    }
+};
+
 module.exports = {
     getProjects,
-    createProject
+    createProject,
+    getMyProjects
 };

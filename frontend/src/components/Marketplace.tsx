@@ -50,14 +50,14 @@ export default function Marketplace() {
     <section id="marketplace" className="glass w-[min(92%,1100px)] mx-auto p-[25px] rounded-[28px]">
       <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-[15px] mb-[24px]">
         <div>
-          <h2 className="text-[20px] font-bold"><i className="fa-solid fa-layer-group text-[#71e5d1] mr-2 text-[16px]"></i>Explore the marketplace</h2>
-          <p className="mt-[5px] text-[#9b9da8] text-[12px]">Complete digital projects built by developers and creators.</p>
+          <h2 className="text-[20px] font-bold"><i className="fa-solid fa-layer-group text-[#22a04a] mr-2 text-[16px]"></i>Explore the marketplace</h2>
+          <p className="mt-[5px] text-[#64748b] text-[12px]">Complete digital projects built by developers and creators.</p>
         </div>
         <div className="relative w-full md:w-[240px]">
-          <i className="fa-solid fa-magnifying-glass absolute left-[14px] top-1/2 -translate-y-1/2 text-[#666873] text-[12px]"></i>
+          <i className="fa-solid fa-magnifying-glass absolute left-[14px] top-1/2 -translate-y-1/2 text-[#64748b] text-[12px]"></i>
           <input
             type="text"
-            className="w-full pl-[36px] pr-[14px] py-[11px] outline-none rounded-[13px] text-white bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.1)] focus:border-[#71e5d1] transition-colors placeholder:text-[#666873] text-sm"
+            className="w-full pl-[36px] pr-[14px] py-[11px] outline-none rounded-[13px] text-[#1e293b] bg-[#f1f5f9] border border-[#e2e8f0] focus:border-[#22a04a] transition-colors placeholder:text-[#64748b] text-sm"
             placeholder="Search projects..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -72,8 +72,8 @@ export default function Marketplace() {
             onClick={() => setFilter(cat)}
             className={`btn-hover shrink-0 px-[13px] py-[8px] rounded-[30px] border text-[10px] cursor-pointer transition-colors ${
               filter === cat
-                ? "text-white bg-[rgba(113,229,209,0.12)] border-[rgba(113,229,209,0.35)]"
-                : "text-[#858691] bg-[rgba(255,255,255,0.035)] border-[rgba(255,255,255,0.1)] hover:text-white hover:bg-[rgba(113,229,209,0.12)] hover:border-[rgba(113,229,209,0.35)]"
+                ? "text-[#1b8a3e] font-bold bg-[rgba(34,160,74,0.12)] border-[rgba(34,160,74,0.35)]"
+                : "text-[#64748b] bg-[rgba(15,23,42,0.055)] border-[#e2e8f0] hover:text-[#1e293b] hover:bg-[rgba(34,160,74,0.12)] hover:border-[rgba(34,160,74,0.35)]"
             }`}
           >
             {cat === "all" ? "All" : cat === "ui" ? "UI / Components" : cat.charAt(0).toUpperCase() + cat.slice(1)}
@@ -85,10 +85,10 @@ export default function Marketplace() {
         {filteredProducts.map((product) => (
           <article
             key={product._id}
-            className="overflow-hidden rounded-[20px] bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.09)] transition duration-300 hover:-translate-y-[6px] hover:border-[rgba(255,255,255,0.2)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+            className="overflow-hidden rounded-[20px] bg-[rgba(15,23,42,0.055)] border border-[#e2e8f0] transition duration-300 hover:-translate-y-[6px] hover:border-[#cbd5e1] hover:shadow-[0_10px_30px_rgba(15,23,42,0.12)]"
           >
             <div className={`h-[170px] grid place-items-center ${product.previewClass}`}>
-              <div className="w-[70px] h-[70px] grid place-items-center rounded-[20px] text-white text-[26px] font-extrabold bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.18)] backdrop-blur-[15px] shadow-[inset_0_1px_rgba(255,255,255,0.2),0_15px_40px_rgba(0,0,0,0.3)]">
+              <div className="w-[70px] h-[70px] grid place-items-center rounded-[20px] text-[#1e293b] text-[26px] font-extrabold bg-white border border-[#e2e8f0] shadow-[0_10px_25px_rgba(15,23,42,0.08)]">
                 {product.symbol}
               </div>
             </div>
@@ -96,25 +96,25 @@ export default function Marketplace() {
               <div className="flex justify-between items-start">
                 <h3 className="text-[13px] font-bold">{product.name}</h3>
                 {product.githubUrl && (
-                  <a href={product.githubUrl.startsWith('http') ? product.githubUrl : `https://${product.githubUrl}`} target="_blank" rel="noreferrer" className="text-[#666873] hover:text-white transition-colors">
+                  <a href={product.githubUrl.startsWith('http') ? product.githubUrl : `https://${product.githubUrl}`} target="_blank" rel="noreferrer" className="text-[#64748b] hover:text-[#1e293b] transition-colors">
                     <i className="fa-brands fa-github text-[14px]"></i>
                   </a>
                 )}
               </div>
-              {product.author && <span className="block mt-[3px] text-[#555761] text-[9px]">by {product.author.name}</span>}
-              <p className="mt-[7px] text-[#9b9da8] text-[11px] leading-[1.55] line-clamp-2">{product.description}</p>
+              {product.author && <span className="block mt-[3px] text-[#64748b] text-[9px]">by {product.author.name}</span>}
+              <p className="mt-[7px] text-[#64748b] text-[11px] leading-[1.55] line-clamp-2">{product.description}</p>
               <div className="flex justify-between items-center mt-[15px]">
-                <span className="px-[9px] py-[5px] rounded-[8px] text-[#b4b6c1] bg-[rgba(255,255,255,0.05)] text-[10px]">
+                <span className="px-[9px] py-[5px] rounded-[8px] text-[#64748b] bg-[rgba(15,23,42,0.055)] text-[10px]">
                   {product.tag}
                 </span>
-                <span className="text-[#71dfcc] text-[10px] font-semibold">{product.price}</span>
+                <span className="text-[#22a04a] text-[10px] font-semibold">{product.price}</span>
               </div>
             </div>
           </article>
         ))}
       </div>
       {filteredProducts.length === 0 && (
-        <p className="py-[34px] text-center text-[#a3a5b0] text-[13px]"><i className="fa-solid fa-box-open mr-2"></i>No projects have been published yet. Be the first to share one.</p>
+        <p className="py-[34px] text-center text-[#64748b] text-[13px]"><i className="fa-solid fa-box-open mr-2"></i>No projects have been published yet. Be the first to share one.</p>
       )}
     </section>
   );

@@ -6,7 +6,7 @@
 
 **Build · Publish · Discover · Exchange**
 
-An open-source ecosystem connecting developers, creators, digital projects, marketplace distribution, and YugCoin-powered transactions.
+An open-source ecosystem connecting developers, creators, digital projects and marketplace distribution.
 
 ![Status](https://img.shields.io/badge/STATUS-ACTIVE_DEVELOPMENT-000000?style=for-the-badge&labelColor=111111)
 ![Open Source](https://img.shields.io/badge/OPEN_SOURCE-YES-000000?style=for-the-badge&labelColor=111111)
@@ -54,8 +54,6 @@ Kaalyug is an open-source digital ecosystem and marketplace for software project
 
 Creators can publish projects, users can discover them, developers can contribute to them, and eligible projects can be distributed through a free or paid model.
 
-At the center of the ecosystem is **YugCoin** — the connected wallet and transaction engine designed to handle marketplace payments.
-
 ```mermaid
 flowchart TD
     A[CREATOR] --> B[PROJECT]
@@ -66,9 +64,6 @@ flowchart TD
     E --> G{DISTRIBUTION}
     G --> H[FREE]
     G --> I[PAID]
-    I --> J[YUGCOIN]
-    J --> K[TRANSACTION]
-    K --> L[CREATOR]
 ```
 
 ---
@@ -84,7 +79,6 @@ Kaalyug is not just one page or one marketplace. It is designed as a collection 
 | Projects | Present complete projects in a structured format |
 | Marketplace | Distribute free and paid digital products |
 | Community | Connect people around projects |
-| YugCoin | Provide the wallet and transaction layer |
 | Open Source | Enable contribution, transparency and collaboration |
 
 The ecosystem can grow without forcing every component into a single responsibility.
@@ -169,146 +163,38 @@ Creators can also publish projects as paid digital products.
     BUYER
      │
      ▼
-   YUGCOIN
-     │
-     ▼
-  TRANSACTION
+  DOWNLOAD
 ```
 
 The same ecosystem therefore supports open collaboration and creator monetization.
 
 ---
 
-## 06 — YugCoin
+## 06 — API Architecture
 
-**The transaction layer.**
-
-YugCoin (YC) is the wallet engine designed for the Kaalyug ecosystem.
-
-> It is a digital wallet/payment system, not a public cryptocurrency.
-
-YugCoin is responsible for the financial logic of the ecosystem while Kaalyug remains responsible for the marketplace experience.
-
-**Separation of responsibilities**
-
-```mermaid
-flowchart LR
-    K[KAALYUG] -->|API| Y[YUGCOIN]
-
-    K --> K1[Projects]
-    K --> K2[Marketplace]
-    K --> K3[Orders]
-    K --> K4[Creators]
-
-    Y --> Y1[Wallets]
-    Y --> Y2[Balances]
-    Y --> Y3[Transfers]
-    Y --> Y4[Transactions]
-```
-
-This separation is intentional. Kaalyug knows *what* is being purchased. YugCoin knows *how* the transaction happens.
-
----
-
-## 07 — The Payment Engine
-
-A marketplace purchase follows a controlled path:
-
-```mermaid
-sequenceDiagram
-    participant U as User
-    participant K as Kaalyug
-    participant Y as YugCoin
-    participant DB as Wallet Database
-
-    U->>K: Purchase project
-    K->>K: Create pending order
-    K->>Y: Authenticated payment request
-    Y->>Y: Verify wallet
-    Y->>Y: Check balance
-    Y->>DB: Process transaction
-    DB-->>Y: Transaction reference
-    Y-->>K: Payment confirmed
-    K->>K: Mark order as paid
-    K-->>U: Grant project access
-```
-
-The important principle:
-
-> Kaalyug does not directly modify wallet balances.
-
-The wallet engine remains responsible for the actual transaction.
-
----
-
-## 08 — Wallet Preview
-
-YugCoin is designed to feel native to the Kaalyug experience.
-
-A lightweight wallet preview can appear inside the marketplace:
-
-```
-╭─────────────────────────────────╮
-│  YUGCOIN                        │
-│                                  │
-│  AVAILABLE BALANCE               │
-│  1,250.50 YC                     │
-│                                  │
-│  YC •••••• 291                   │
-│                                  │
-│  ● WALLET CONNECTED              │
-│                                  │
-│  ─────────────────────────────   │
-│          OPEN WALLET             │
-╰─────────────────────────────────╯
-```
-
-And during checkout:
-
-```
-╭─────────────────────────────────╮
-│  KAALYUG CHECKOUT                │
-│                                  │
-│  Project              250 YC     │
-│                                  │
-│  Wallet balance     1,250 YC     │
-│  After payment      1,000 YC     │
-│                                  │
-│  ─────────────────────────────   │
-│                                  │
-│          PAY 250 YC              │
-╰─────────────────────────────────╯
-```
-
-The objective is simple: the wallet should feel like part of Kaalyug — not an unrelated application.
-
----
-
-## 09 — API Architecture
-
-YugCoin already contains the wallet engine. The API becomes the controlled interface through which other applications communicate with it.
+The backend exposes the marketplace through a controlled, authenticated API.
 
 ```mermaid
 flowchart TD
-    A[EXTERNAL APP] -->|HTTPS| B[YUGCOIN API]
-    B --> C[WALLET ENGINE]
+    A[FRONTEND] -->|HTTPS| B[KAALYUG API]
+    B --> C[SERVICES]
     C --> D[(DATABASE)]
 ```
 
-Example endpoints can include:
+Example endpoints include:
 
 ```
-GET  /api/wallet/balance
-POST /api/payments
-GET  /api/payments/:reference
-GET  /api/transactions/:reference
+GET  /api/projects
+POST /api/projects
+POST /api/users/login
+GET  /api/admin/stats
 ```
 
-The API does not duplicate the wallet logic. It exposes the existing engine through controlled, authenticated routes.
+All mutations require an authenticated token; the frontend is never trusted with privileged decisions.
 
 ---
 
-## 10 — System Architecture
+## 07 — System Architecture
 
 ```mermaid
 flowchart TB
@@ -319,52 +205,32 @@ flowchart TB
         KB[Backend]
         KM[Marketplace]
         KP[Projects]
-        KO[Orders]
-    end
-
-    subgraph Y[YUGCOIN]
-        YF[Wallet Frontend]
-        YB[Wallet Backend]
-        YE[Wallet Engine]
-        YT[Transactions]
     end
 
     DB[(Database)]
 
     USER --> KF
-    USER --> YF
-
     KF --> KB
     KB --> KM
     KB --> KP
-    KB --> KO
-
-    KB -->|Authenticated API| YB
-
-    YB --> YE
-    YE --> YT
-    YT --> DB
+    KB --> DB
 ```
 
-**Architecture principle:** Separate the responsibilities. Connect the systems.
-
-This keeps the marketplace and wallet engine independently maintainable.
+**Architecture principle:** Separate the responsibilities. Keep each layer independently maintainable.
 
 ---
 
-## 11 — Security Model
+## 08 — Security Model
 
-The frontend should never be trusted with sensitive transaction decisions.
+The frontend should never be trusted with sensitive decisions.
 
-The intended request path is:
+The request path is:
 
 ```mermaid
 flowchart TD
     A[USER] --> B[KAALYUG FRONTEND]
     B --> C[KAALYUG BACKEND]
-    C -->|Authenticated Request| D[YUGCOIN API]
-    D --> E[WALLET ENGINE]
-    E --> F[(DATABASE)]
+    C --> D[(DATABASE)]
 ```
 
 Core principles:
@@ -372,11 +238,6 @@ Core principles:
 - Server-side validation
 - Authenticated API communication
 - Protected API credentials
-- Balance verification
-- Unique transaction references
-- Order/payment IDs
-- Idempotent payment requests
-- Atomic transaction processing
 - Environment-based secrets
 - No private API credentials in frontend code
 
@@ -479,14 +340,12 @@ Kaalyug
 │   ├── Discovery
 │   ├── Project pages
 │   ├── Creator profiles
-│   └── Wallet interface
+│   └── Discovery
 │
 ├── Backend
 │   ├── Users
 │   ├── Projects
-│   ├── Marketplace
-│   ├── Orders
-│   └── YugCoin integration
+│   └── Marketplace
 │
 └── Ecosystem
     ├── Open-source projects
@@ -515,14 +374,7 @@ The exact implementation may evolve as the platform develops.
 - Free distribution
 - Paid distribution
 
-**YugCoin**
-- Wallet integration
-- Balance preview
-- Payment API
-- Marketplace checkout
-- Transaction references
-
-**Ecosystem**
+**Community**
 - Community
 - Analytics
 - Reviews
@@ -544,7 +396,6 @@ Kaalyug follows an incremental product-development philosophy.
 | **v1.0** | Foundation — Core experience |
 | **v1.1** | Refinement — Marketplace improvements |
 | **v1.2** | Publishing — Creator systems |
-| **v1.3** | YugCoin — Transaction integration |
 | **v1.x** | Ecosystem expansion |
 
 Versions should represent meaningful milestones rather than arbitrary changes.
@@ -564,9 +415,8 @@ flowchart LR
     E --> F{DISTRIBUTE}
     F --> G[FREE]
     F --> H[PAID]
-    H --> I[YUGCOIN]
     G --> J[COMMUNITY]
-    I --> J
+    H --> J
     J --> K[CONTRIBUTE]
     K --> L[IMPROVE]
     L --> B
@@ -587,7 +437,6 @@ Because a project should be able to become more than a repository. It should hav
 - **Identity** — Creator, Version, Preview, Documentation
 - **Discovery** — Search, Categories, Community
 - **Distribution** — Free, Paid
-- **Transaction** — YugCoin
 - **Community** — Contribution, Collaboration
 
 Kaalyug brings these concepts together into one ecosystem.
@@ -604,7 +453,6 @@ Kaalyug is an evolving project. The current architecture establishes the foundat
 - Creator-oriented publishing
 - Marketplace distribution
 - Free and paid projects
-- YugCoin integration
 - Open-source collaboration
 - Low-end device accessibility
 

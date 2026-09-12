@@ -39,3 +39,6 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# vite build noise
+vite-out.log

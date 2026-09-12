@@ -1,0 +1,399 @@
+/* ============================================================
+   Kaalyug UI Theme — reusable design system
+   Identity glue: glass cards + glow background + accordion/dropdown
+   behavior + typography scale. Change only --primary / wordmark
+   per brand; everything else stays identical.
+   ============================================================ */
+
+/* Font loading moved to index.html <link> tags (standard practice — better
+   performance than @import and avoids render-blocking). */
+
+:root {
+  /* Palette — Kaalyug light theme */
+  --primary: #22a04a;
+  --primary-hover: #1b8a3e;
+  --danger: #e11d48;
+  --warning: #f59e0b;
+
+  --bg-base: #f4f7fa;
+  /* page background */
+  --surface: #ffffff;
+  --surface-raised: #f8fafc;
+  --surface-sunken: #f1f5f9;
+  --border: #e2e8f0;
+
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+
+  /* Shape & depth */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.06);
+
+  /* Type */
+  --font-display: 'Doto', sans-serif;
+  /* wordmark / hero numerals only */
+  --font-body: 'Lato', sans-serif;
+}
+
+/* ------------------------------------------------------------
+   Base
+   ------------------------------------------------------------ */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  background: linear-gradient(180deg, #eef6ee 0, var(--bg-base) 260px);
+  min-height: 100vh;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+/* ------------------------------------------------------------
+   3.1 Glass card (hero element)
+   ------------------------------------------------------------ */
+.glass-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 1.5rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.1);
+}
+
+/* 3.3 Danger surface — destructive zones (logout, delete) */
+.danger-zone {
+  border-color: rgba(244, 63, 94, 0.25);
+  background: color-mix(in srgb, var(--danger) 6%, transparent);
+}
+
+/* 1. Logo — artwork is dark-on-white, so it must NOT be multiplied away.
+   A subtle ring + shadow keeps the tile readable on any navbar surface. */
+.logo-blend {
+  filter: drop-shadow(0 3px 8px rgba(15, 23, 42, 0.18));
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.08);
+}
+
+/* ------------------------------------------------------------
+   4. Components
+   ------------------------------------------------------------ */
+
+/* Wordmark — Doto renders as a dot-matrix face. The default (100..900) axis
+   is very light, so pin weight/letter-spacing for a legible, solid lockup. */
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  font-variation-settings: "wght" 900;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.3rem;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+.btn-primary:disabled { opacity: 0.5; cursor: wait; transform: none; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.3rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-main);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+.btn-secondary:hover {
+  border-color: var(--border-strong, #cbd5e1);
+  transform: translateY(-1px);
+}
+
+/* Inputs */
+.input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+  color: var(--text-main);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+.input::placeholder { color: var(--text-muted); }
+
+/* Notices / toasts — left-accent pill */
+.notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid;
+  border-radius: var(--radius-md);
+  font-size: 0.82rem;
+}
+.notice-success {
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: color-mix(in srgb, var(--primary) 70%, var(--text-main));
+}
+.notice-error {
+  border-color: color-mix(in srgb, var(--danger) 30%, transparent);
+  background: color-mix(in srgb, var(--danger) 10%, transparent);
+  color: color-mix(in srgb, var(--danger) 75%, var(--text-main));
+}
+.notice-warning {
+  border-color: color-mix(in srgb, var(--warning) 30%, transparent);
+  background: color-mix(in srgb, var(--warning) 10%, transparent);
+  color: color-mix(in srgb, var(--warning) 75%, var(--text-main));
+}
+
+/* Dropdown menu — glass recipe */
+.dropdown {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+  padding: 0.5rem;
+  min-width: 14rem;
+}
+.dropdown-header {
+  padding: 0.6rem 0.75rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.35rem;
+}
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-main);
+  text-align: left;
+  font-size: 0.9rem;
+  transition: background 0.15s ease;
+}
+.dropdown-item:hover {
+  background: var(--surface-sunken);
+}
+
+/* Collapsible section (accordion) */
+.accordion-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.accordion-body > * { overflow: hidden; }
+.accordion.open .accordion-body { grid-template-rows: 1fr; }
+.accordion .chevron { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.accordion.open .chevron { transform: rotate(180deg); }
+
+/* Avatar — circle, solid primary, white bold initial */
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Icon chips — section headers */
+.icon-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--primary) 12%, var(--surface-raised));
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* Copy button — swaps to check for 2s after click (JS toggles .copied) */
+.copy-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  padding: 0.25rem;
+  border-radius: var(--radius-sm);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.copy-btn:hover {
+  color: var(--text-main);
+  background: var(--surface-sunken);
+}
+.copy-btn.copied { color: var(--primary); }
+
+/* ------------------------------------------------------------
+   5. Layout grammar
+   ------------------------------------------------------------ */
+
+/* Two-column settings/dashboard layout */
+.settings-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* Navbar — glass card */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+}
+
+/* Muted data rows */
+.data-rows {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+}
+.data-rows dt {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+.data-rows dd {
+  margin: 0.1rem 0 0;
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+/* Mono IDs with ellipsis */
+.mono-id {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.82em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Section rhythm helpers */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.card-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+.card-subtitle {
+  margin: 0.15rem 0 0;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+/* ------------------------------------------------------------
+   6. Motion
+   ------------------------------------------------------------ */
+@keyframes slide-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.slide-in { animation: slide-in 0.4s ease-out both; }
+
+.hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.hover-lift:hover { transform: translateY(-1px); }
+
+/* ------------------------------------------------------------
+   7. Typography scale
+   ------------------------------------------------------------ */
+.wordmark-nav {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 900;
+  letter-spacing: 0.015em;
+  font-variation-settings: "wght" 900;
+  -webkit-font-smoothing: antialiased;
+}
+.wordmark-hero {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  font-variation-settings: "wght" 900;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1.page-title { font-size: 1.35rem; font-weight: 700; margin: 0; }
+
+.body-text { font-size: 0.9rem; color: var(--text-main); }
+.label-text { font-size: 0.75rem; color: var(--text-muted); }
+
+/* ------------------------------------------------------------
+   8. Responsive rules
+   ------------------------------------------------------------ */
+@media (max-width: 768px) {
+  /* Nav swap: flat links hidden -> hamburger. Targets .navbar AND the nav
+     element itself (.glass-card), because the Navbar uses the glass-card
+     class and never carries .navbar. !important guards against later
+     stylesheets resurrecting the hidden links. */
+  .navbar .nav-links,
+  .navbar nav.nav-links,
+  nav.glass-card .nav-links {
+    display: none !important;
+  }
+  .navbar .hamburger,
+  nav.glass-card .hamburger {
+    display: inline-flex !important;
+    background: transparent;
+  }
+}
+
+@media (min-width: 769px) {
+  .navbar .hamburger { display: none; }
+}
+
+@media (max-width: 900px) {
+  .settings-layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 420px) {
+  .glass-card { padding: 1.1rem; }
+  .hide-tight { display: none !important; }
+  button, .btn-primary, .btn-secondary, .input, .dropdown-item {
+    min-height: 2.6rem;
+  }
+}
