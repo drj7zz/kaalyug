@@ -11,10 +11,13 @@ import '../console.css';
  */
 
 // Console API base — configurable via env (VITE_CONSOLE_API_URL) so deployments
-// (Vercel rewrite in prod, local backend in dev) stay out of the source.
+// (Vercel rewrite in prod, local/remote backend in dev) stay out of the source.
 const configuredConsoleApiUrl = import.meta.env.VITE_CONSOLE_API_URL?.replace(/\/$/, "");
+// In dev, derive from VITE_API_URL (same backend host, console prefix) unless
+// overridden. In prod, use the same-origin Vercel rewrite.
+const derivedConsoleUrl = (import.meta.env.VITE_API_URL?.replace(/\/$/, "") || "").replace(/\/api$/, "/console-api/admin/console");
 const API = configuredConsoleApiUrl
-  || (import.meta.env.PROD ? '/console-api/admin/console' : 'http://localhost:5000/console-api/admin/console');
+  || (import.meta.env.PROD ? '/console-api/admin/console' : derivedConsoleUrl || 'http://localhost:5000/console-api/admin/console');
 
 type Overview = {
   counts: Record<string, number>;
