@@ -30,7 +30,7 @@ app.use(cors({
         }
         return callback(new Error('Origin is not allowed by CORS'));
     },
-    methods: ['GET', 'POST', 'OPTIONS'],
+    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
     optionsSuccessStatus: 204
 }));
 app.use(express.json({ limit: '100kb' }));
@@ -50,6 +50,11 @@ app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/admin', require('./routes/adminRoutes'));
 app.use("/api/wallet", walletRoutes)
 // app.use('/api/wallet', require('./routes/walletRoutes'));
+
+// Admin Console — separate URL prefix (/console-api/*) so it can be locked
+// down independently of the public marketplace routes. Drives the panel
+// rendered at /console on the frontend.
+app.use('/console-api/admin/console', require('./routes/adminConsoleRoutes'));
 
 app.use((err, _req, res, _next) => {
     if (err.message === 'Origin is not allowed by CORS') {

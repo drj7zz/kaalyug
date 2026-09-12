@@ -8,12 +8,14 @@ import Auth from './pages/Auth';
 import Profile from './pages/Profile';
 import Dashboard from './pages/Dashboard';
 import About from './pages/About';
-import Admin from './pages/Admin';
+import Console from './pages/Console';
 import { getSession } from './lib/auth';
 
+// /console is unlisted: it lives outside the public Layout (no navbar chrome),
+// and silently bounces non-admins to login.
 function RequireAdmin() {
   const session = getSession();
-  return session?.role === 'admin' ? <Admin /> : <Navigate to="/login" replace />;
+  return session?.role === 'admin' ? <Console /> : <Navigate to="/login" replace />;
 }
 
 /** Publishing & dashboard are for signed-in users only — guests are sent to login. */
@@ -35,7 +37,8 @@ export default function App() {
       <Route path="/register" element={<Auth />} />
       <Route path="/profile" element={<Profile />} />
     </Route>
-    <Route path="/admin" element={<RequireAdmin />} />
+    <Route path="/console" element={<RequireAdmin />} />
+    <Route path="/admin" element={<Navigate to="/console" replace />} />
     <Route path="*" element={<Navigate to="/" replace />} />
   </Routes>;
 }

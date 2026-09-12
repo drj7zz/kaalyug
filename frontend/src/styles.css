@@ -83,7 +83,7 @@
 /* Green-tinted disclaimer above the form */
 .auth-disclaimer {
   background: rgba(34, 160, 74, 0.08); border: 1px solid rgba(34, 160, 74, 0.28);
-  border-radius: 0.7rem; color: var(--text-muted); font-size: 0.78rem;
+  border-radius: 0.85rem; color: var(--text-muted); font-size: 0.85rem;
   line-height: 1.45; padding: 0.75rem 0.9rem;
 }
 /* Forgot password / switch-mode flat links row */
@@ -93,14 +93,14 @@
 }
 .auth-flat-links button, .auth-flat-links a {
   background: transparent; border: none; color: var(--text-muted); font: inherit;
-  font-size: 0.78rem; padding: 0; cursor: pointer; text-decoration: none;
+  font-size: 0.82rem; padding: 0; cursor: pointer; text-decoration: none;
 }
 .auth-flat-links button:hover, .auth-flat-links a:hover { color: var(--primary); }
 .auth-input {
   width: 100%; padding: 0.7rem 0.9rem; outline: none;
   border-radius: var(--radius-md); color: var(--text-main);
   background: var(--surface-sunken);
-  border: 1px solid var(--border); font-size: 0.875rem;
+  border: 1px solid var(--border); font-size: 0.92rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .auth-input:focus {
@@ -171,8 +171,8 @@
 /* Admin/dashboard -> theme layout + tables */
 .admin-page { width: min(1100px, 92%); margin: 0 auto; padding: 4rem 0; }
 .admin-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }
-.admin-top h1 { margin: 0.4rem 0 0; font-size: 1.35rem; font-weight: 700; color: var(--text-main); }
-.eyebrow { color: var(--primary); font-size: 0.7rem; letter-spacing: 0.14em; margin: 0; }
+.admin-top h1 { margin: 0.4rem 0 0; font-size: 1.5rem; font-weight: 700; color: var(--text-main); }
+.eyebrow { color: var(--primary); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; margin: 0; }
 .admin-home { color: var(--primary); text-decoration: none; font-size: 0.85rem; }
 .admin-loading { color: var(--text-muted); }
 .admin-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1rem; }
@@ -181,11 +181,11 @@
 .metric strong { display: block; margin-top: 0.4rem; font-size: 2.25rem; color: var(--text-main); }
 .admin-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
 .data-panel { padding: 1.5rem; overflow: hidden; }
-.data-panel h2 { margin: 0 0 1.2rem; font-size: 1.05rem; font-weight: 600; color: var(--text-main); }
+.data-panel h2 { margin: 0 0 1.2rem; font-size: 1.1rem; font-weight: 600; color: var(--text-main); }
 .table-wrap { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
-th { color: var(--text-muted); text-align: left; font-weight: 500; }
-th, td { padding: 0.7rem 0.45rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+th { color: var(--text-muted); text-align: left; font-weight: 600; }
+th, td { padding: 0.75rem 0.5rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
 td { color: var(--text-main); }
 
 @media (max-width: 700px) {

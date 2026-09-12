@@ -118,8 +118,8 @@ export default function Navbar() {
                     <i className="fa-solid fa-user w-[18px] text-[#64748b]"></i> Profile
                   </Link>
                   {userInfo.role === "admin" && (
-                    <Link to="/admin" className="dropdown-item no-underline" role="menuitem">
-                      <i className="fa-solid fa-shield-halved w-[18px] text-[#64748b]"></i> Admin
+                    <Link to="/console" className="dropdown-item no-underline" role="menuitem">
+                      <i className="fa-solid fa-shield-halved w-[18px] text-[#64748b]"></i> Console
                     </Link>
                   )}
                   <button onClick={handleLogout} className="dropdown-item" style={{ color: "#e11d48" }} role="menuitem">
@@ -177,8 +177,8 @@ export default function Navbar() {
                 <i className="fa-solid fa-user w-[18px] text-[#64748b]"></i> Profile
               </Link>
               {userInfo.role === "admin" && (
-                <Link to="/admin" className="dropdown-item no-underline">
-                  <i className="fa-solid fa-shield-halved w-[18px] text-[#64748b]"></i> Admin
+                <Link to="/console" className="dropdown-item no-underline">
+                  <i className="fa-solid fa-shield-halved w-[18px] text-[#64748b]"></i> Console
                 </Link>
               )}
               <button onClick={handleLogout} className="dropdown-item" style={{ color: "#e11d48" }}>

@@ -91,7 +91,7 @@ export default function Profile() {
               <div>
                 <dt>Tools</dt>
                 <dd>
-                  <Link to="/admin" className="text-[#22a04a] no-underline">Open admin panel</Link>
+                  <Link to="/console" className="text-[#22a04a] no-underline">Open console</Link>
                 </dd>
               </div>
             )}

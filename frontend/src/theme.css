@@ -10,20 +10,20 @@
 
 :root {
   /* Palette — Kaalyug light theme */
-  --primary: #22a04a;
-  --primary-hover: #1b8a3e;
-  --danger: #e11d48;
-  --warning: #f59e0b;
+  --primary: #2e9e57;
+  --primary-hover: #1f8746;
+  --danger: #d24a68;
+  --warning: #e4a554;
 
-  --bg-base: #f4f7fa;
+  --bg-base: #f6f7f5;
   /* page background */
   --surface: #ffffff;
-  --surface-raised: #f8fafc;
-  --surface-sunken: #f1f5f9;
-  --border: #e2e8f0;
+  --surface-raised: #fafbf8;
+  --surface-sunken: #f1f4ee;
+  --border: #e3e6e0;
 
-  --text-main: #1e293b;
-  --text-muted: #64748b;
+  --text-main: #1f2630;
+  --text-muted: #5b6573;
 
   /* Shape & depth */
   --radius-sm: 0.5rem;
@@ -33,9 +33,10 @@
   --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.06);
 
   /* Type */
-  --font-display: 'Doto', sans-serif;
+  --font-display: 'Inter', system-ui, sans-serif;
   /* wordmark / hero numerals only */
-  --font-body: 'Lato', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 /* ------------------------------------------------------------
